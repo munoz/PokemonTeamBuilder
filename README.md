@@ -61,7 +61,7 @@
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://app.lucidchart.com/documents/embeddedchart/f5242907-ed67-4645-9635-6d20a86cbc37" id="h6RI_2ZaSzp_"></iframe></div>
 
 ### [BONUS] Digital Wireframes & Mockups
 
