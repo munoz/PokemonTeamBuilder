@@ -69,8 +69,7 @@ Build a team of Pokémon for strategy or fun!
    * ...
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://app.lucidchart.com/documents/embeddedchart/f5242907-ed67-4645-9635-6d20a86cbc37" id="h6RI_2ZaSzp_"></iframe></div>
+![name-of-you-image](https://i.imgur.com/Mc9ks8A.jpg)
 
 ### [BONUS] Digital Wireframes & Mockups
 
