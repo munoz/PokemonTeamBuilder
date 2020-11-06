@@ -11,6 +11,18 @@ import Parse
 
 class LoggedInViewController: UIViewController {
 
+    @IBAction func onLogout(_ sender: Any) {
+        PFUser.logOut()
+        
+        let main = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = main.instantiateViewController(withIdentifier: "LoginViewController")
+        
+        let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+        
+        sceneDelegate.window?.rootViewController = loginViewController
+    
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
