@@ -44,12 +44,31 @@ Build a team of Pokémon for strategy or fun!
 
 ### 2. Screen Archetypes
 
-* [list first screen here]
-   * [list associated required story here]
-   * ...
-* [list second screen here]
-   * [list associated required story here]
-   * ...
+* Login
+   * Insert your username and password to access your account
+   * Signup button if you don't have an account
+* Signup
+   * Enter a unique username
+   * Enter a password and one more time to confirm
+   * Click signup to take you to Team List
+* Team List (First Screen that is shown)
+   * Navigation bar with three options: SharePage, Teams, Logout
+   * Able to scroll through your teams
+   * Button to add a new team to your list (takes you to Team Display page)
+* Team Display
+   * 1-6 slots to make up your pokemon team
+   * Save your team once finished to take you to your team list
+   * Click on the poke bar to choose your pokemon (takes you to Pokemon Search page)
+* Pokemon Search
+   * Search the pokemon you want
+   * Click the pokemon to choose its details (take you to Pokemon Editing page)
+* Pokemon Editing
+   * Choose 1-4 moves for your pokemon (may not be 0)
+   * Able to select an item (not necessary)
+   * Mandatory to select the following: Ability, Nature, Gender
+   * Save button to take you Team Display
+   * There will be a back button if you don't want that pokemon
+
 
 ### 3. Navigation
 
