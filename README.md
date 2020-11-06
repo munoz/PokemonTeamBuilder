@@ -74,18 +74,18 @@ Build a team of Pokémon for strategy or fun!
 
 **Tab Navigation** (Tab to Screen)
 
-* [fill out your first tab]
-* [fill out your second tab]
-* [fill out your third tab]
+* SharePage
+* Your Teams
+* Logout
 
 **Flow Navigation** (Screen to Screen)
 
-* [list first screen here]
-   * [list screen navigation here]
-   * ...
-* [list second screen here]
-   * [list screen navigation here]
-   * ...
+* Login Page -> Teams List Page
+* Login Page -> Signup Page -> Team List Page
+* Team List add button -> Team Display page
+* Team Display pokemon bar -> Pokemon Search Page
+* Pokemon clicked in Search Results -> Pokemon Editing
+* Pokemon Editing saved -> Team Display page
 
 ## Wireframes
 ![name-of-you-image](https://i.imgur.com/Mc9ks8A.jpg)
