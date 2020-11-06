@@ -77,8 +77,18 @@ Build a team of Pokémon for strategy or fun!
 
 ## Schema 
 [This section will be completed in Unit 9]
+
 ### Models
-[Add table of models]
+#### User
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user (default field) |
+   | username      | String   | unique username for the user |
+   | password      | String   | password to access acount |
+   | firstname     | String   | User's first name |
+   | lastname      | String   | User's last name |
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
