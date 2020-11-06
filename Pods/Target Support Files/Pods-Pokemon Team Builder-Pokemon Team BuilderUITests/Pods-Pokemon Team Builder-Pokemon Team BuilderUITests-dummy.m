@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_Pokemon_Team_Builder_Pokemon_Team_BuilderUITests : NSObject
+@end
+@implementation PodsDummy_Pods_Pokemon_Team_Builder_Pokemon_Team_BuilderUITests
+@end

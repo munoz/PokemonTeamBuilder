@@ -1,0 +1,6 @@
+framework module Pods_Pokemon_Team_Builder_Pokemon_Team_BuilderUITests {
+  umbrella header "Pods-Pokemon Team Builder-Pokemon Team BuilderUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
