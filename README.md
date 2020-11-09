@@ -95,7 +95,7 @@ Build a team of Pokémon for strategy or fun!
 ### [BONUS] Interactive Prototype
 
 ## Schema 
-[This section will be completed in Unit 9]
+[Code Snippets will be added when implemented]
 
 ### Models
 #### User
@@ -107,8 +107,25 @@ Build a team of Pokémon for strategy or fun!
    | password      | String   | password to access acount |
    | firstname     | String   | User's first name |
    | lastname      | String   | User's last name |
+   
+#### Teams
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the team (default field) |
+   | user          | Pointer  | Connect the team to its respective user |
+   | team          | Array    | Consists of the pokemon team |
+   | name          | String   | Name of the Team |
 
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+- Login Screen
+      - (Read/GET) Query for the user that will login
+- Signup Screen
+      - (Create/POST) Create a new user for the app
+- Team List Screen
+      - (Read/GET) Query for all the teams that the user made
+- Team Display Screen
+      - (Create/POST) Create
+      - ()
+- Login Screen
+      - (Read/GET) Query for the user that will login
