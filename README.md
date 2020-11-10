@@ -95,7 +95,6 @@ Build a team of Pokémon for strategy or fun!
 ### [BONUS] Interactive Prototype
 
 ## Schema 
-[Code Snippets will be added when implemented]
 
 ### Models
 #### User
@@ -116,6 +115,8 @@ Build a team of Pokémon for strategy or fun!
    | name          | String   | Name of the Team |
 
 ### Networking
+[Code Snippets will be added when implemented]
+
 - Login Screen
       - (Read/GET) Query for the user that will login
 - Signup Screen
