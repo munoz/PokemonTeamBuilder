@@ -105,8 +105,6 @@ Build a team of Pokémon for strategy or fun!
    | objectId      | String   | unique id for the user (default field) |
    | username      | String   | unique username for the user |
    | password      | String   | password to access acount |
-   | firstname     | String   | User's first name |
-   | lastname      | String   | User's last name |
    
 #### Teams
 
@@ -125,7 +123,18 @@ Build a team of Pokémon for strategy or fun!
 - Team List Screen
       - (Read/GET) Query for all the teams that the user made
 - Team Display Screen
-      - (Create/POST) Create
-      - ()
-- Login Screen
-      - (Read/GET) Query for the user that will login
+      - (Create/POST) Create a new team for the user
+      - (Read/GET) Get the team that is being worked on
+- Pokemon Editing Screen
+      - (Create/POST) Create the pokemon that will be added to the team
+
+#### [OPTIONAL:] Existing API Endpoints
+##### Pokemon API: PokeAPI
+- Base URL - [https://pokeapi.co](https://pokeapi.co)
+
+   HTTP Verb | Endpoint                        | Description |
+   --------- | ------------------------------- | ----------- |
+    `GET`    | /pokemon?limit=807&offset=0     | get all pokemon up to Gen 7 |
+    `GET`    | /pokemon/name                   | return specific pokemon by name |
+    `GET`    | /item-attribute/holdable-active | get limited battle active items (not include mega stones or z-crystal) |
+    `GET`    | /nature                         | return all natures pokemon can learn |
