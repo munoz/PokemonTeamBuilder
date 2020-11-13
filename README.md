@@ -26,7 +26,6 @@ Build a team of Pokémon for strategy or fun!
 **Required Must-have Stories**
 
 * Login, Signup, Logout
-<img src='https://recordit.co/9tLRp5Sc6z.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 * Create a team of Pokémon
 * Edit existing team
 * Search for Pokémon search
