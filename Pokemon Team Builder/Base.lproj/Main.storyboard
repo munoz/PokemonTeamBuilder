@@ -167,21 +167,6 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="817.63392857142856"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="K2X-nW-VYM">
-            <objects>
-                <viewController id="EC4-9l-vNI" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="49b-xx-lZO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="mfy-Ui-NmL"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QQE-xp-XZN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1106" y="832"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="wEe-VI-rqI"/>
