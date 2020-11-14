@@ -17,7 +17,6 @@
 		3FC5588F2555116B00E63573 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC5588E2555116B00E63573 /* LoginViewController.swift */; };
 		3FC55891255517B200E63573 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC55890255517B200E63573 /* SignUpViewController.swift */; };
 		3FC5589325551CEE00E63573 /* LoggedInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC5589225551CEE00E63573 /* LoggedInViewController.swift */; };
-		6EA3A8A4256093B100DDC22F /* TeamBuilderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA3A8A3256093B100DDC22F /* TeamBuilderViewController.swift */; };
 		7AC5B46E57E29FE02C8CEC94 /* Pods_Pokemon_Team_Builder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0586F62BDDCF02A3785918 /* Pods_Pokemon_Team_Builder.framework */; };
 		9D16A61BBE030C11294E9408 /* Pods_Pokemon_Team_BuilderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7883ADF86E94AA1C97C6B9A8 /* Pods_Pokemon_Team_BuilderTests.framework */; };
 		FF3810D6169B5541AC81D148 /* Pods_Pokemon_Team_Builder_Pokemon_Team_BuilderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525D54752909C85FD49BFBE0 /* Pods_Pokemon_Team_Builder_Pokemon_Team_BuilderUITests.framework */; };
@@ -62,7 +61,6 @@
 		525D54752909C85FD49BFBE0 /* Pods_Pokemon_Team_Builder_Pokemon_Team_BuilderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokemon_Team_Builder_Pokemon_Team_BuilderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C0586F62BDDCF02A3785918 /* Pods_Pokemon_Team_Builder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokemon_Team_Builder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65EAC803C9B4D61847AE3F52 /* Pods-Pokemon Team Builder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokemon Team Builder.release.xcconfig"; path = "Target Support Files/Pods-Pokemon Team Builder/Pods-Pokemon Team Builder.release.xcconfig"; sourceTree = "<group>"; };
-		6EA3A8A3256093B100DDC22F /* TeamBuilderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamBuilderViewController.swift; sourceTree = "<group>"; };
 		7883ADF86E94AA1C97C6B9A8 /* Pods_Pokemon_Team_BuilderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokemon_Team_BuilderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AC4ED4D0991B0E099A88D08 /* Pods-Pokemon Team Builder-Pokemon Team BuilderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokemon Team Builder-Pokemon Team BuilderUITests.release.xcconfig"; path = "Target Support Files/Pods-Pokemon Team Builder-Pokemon Team BuilderUITests/Pods-Pokemon Team Builder-Pokemon Team BuilderUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A7208F4D177B440F41228B43 /* Pods-Pokemon Team BuilderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokemon Team BuilderTests.release.xcconfig"; path = "Target Support Files/Pods-Pokemon Team BuilderTests/Pods-Pokemon Team BuilderTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 				3FA5CBA725550A86002F866D /* Info.plist */,
 				3FC55890255517B200E63573 /* SignUpViewController.swift */,
 				3FC5588E2555116B00E63573 /* LoginViewController.swift */,
-				6EA3A8A3256093B100DDC22F /* TeamBuilderViewController.swift */,
 			);
 			path = "Pokemon Team Builder";
 			sourceTree = "<group>";
@@ -417,7 +414,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FC5588F2555116B00E63573 /* LoginViewController.swift in Sources */,
-				6EA3A8A4256093B100DDC22F /* TeamBuilderViewController.swift in Sources */,
 				3FC5589325551CEE00E63573 /* LoggedInViewController.swift in Sources */,
 				3FA5CB9A25550A84002F866D /* AppDelegate.swift in Sources */,
 				3FC55891255517B200E63573 /* SignUpViewController.swift in Sources */,
