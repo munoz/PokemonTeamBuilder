@@ -20,7 +20,6 @@ class LoggedInViewController: UIViewController {
         let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
         
         sceneDelegate.window?.rootViewController = loginViewController
-    
     }
     
     override func viewDidLoad() {
