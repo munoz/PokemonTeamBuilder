@@ -1,0 +1,32 @@
+{
+  "name": "pokemon-sprites",
+  "description": "pokemon sprites",
+  "main": "index.js",
+  "authors": [
+    "PokeAPI"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "pokemon",
+    "pokeapi"
+  ],
+  "homepage": "https://github.com/PokeAPI/sprites",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "version": "2.0.0",
+  "_release": "2.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.0.0",
+    "commit": "a907856d8a243bc97fc8eb3b5d5fd61d593e28ec"
+  },
+  "_source": "https://github.com/PokeAPI/sprites.git",
+  "_target": "^2.0.0",
+  "_originalSource": "PokeAPI/sprites",
+  "_direct": true
+}

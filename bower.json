@@ -1,0 +1,20 @@
+{
+  "name": "PokemonTeamBuilder",
+  "homepage": "https://github.com/munoz/PokemonTeamBuilder",
+  "authors": [
+    "Eduardo445 <esoto-rodriguez@csumb.edu>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "pokemon-sprites": "PokeAPI/sprites#^2.0.0"
+  }
+}
