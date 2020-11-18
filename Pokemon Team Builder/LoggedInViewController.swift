@@ -24,10 +24,22 @@ class LoggedInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let currentUser = PFUser.current()!
+        
+        /*
+         todo: query the current user's teams and display them on this screen
+         */
+        
+        
+        
+        
         // Do any additional setup after loading the view.
     }
     
+    
+    
+
 
     /*
     // MARK: - Navigation
