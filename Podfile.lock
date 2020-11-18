@@ -7,11 +7,13 @@ PODS:
     - Parse/Core (= 1.19.0)
   - Parse/Core (1.19.0):
     - Bolts/Tasks (= 1.9.1)
+  - PokemonAPI (6.0.2)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
   - Parse
+  - PokemonAPI
 
 SPEC REPOS:
   trunk:
@@ -19,13 +21,15 @@ SPEC REPOS:
     - AlamofireImage
     - Bolts
     - Parse
+    - PokemonAPI
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   Parse: 0fb5c7cc7ee5900f2434e24607d0496155b8d04f
+  PokemonAPI: bff9656c1825288e7f028b415ce6276122ad4c6a
 
-PODFILE CHECKSUM: 87d227dec584349e2f36bb752da36168d70399b7
+PODFILE CHECKSUM: 5dd0c2e4087e65d6edec40887646c532339587ed
 
 COCOAPODS: 1.10.0

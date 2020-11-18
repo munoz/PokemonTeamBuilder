@@ -21,12 +21,33 @@ import Parse
  
  
  team: array of dictionaries, representing pokemon and their attributes
+ abilities, all that
  
 */
 
 
 class TeamBuilderViewController: UIViewController {
 
+    @IBOutlet weak var teamNameField: UITextField!
+    
+    @IBAction func onSaveTeam(_ sender: Any) {
+        let team = PFObject(className: "Team")
+        team["User"] = currentUser
+        team["Pokemon"] = ["sdfsdklflskjdskljfskjfsklfjl", "this is a placeholer pay this no mind"]
+        
+        /*
+         add the team to the team database
+         */
+        
+        
+        
+    }
+    
+    let currentUser = PFUser.current()!
+    
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
