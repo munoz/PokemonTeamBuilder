@@ -165,7 +165,7 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
             case .failure(let error):
                 print(error.localizedDescription)
             }
-        }
+            }
 
         
         
