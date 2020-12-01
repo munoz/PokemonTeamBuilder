@@ -32,7 +32,7 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
     
     @IBAction func OnAddPokemon(_ sender: Any) {        // todo: with the data on the page, make a dictionary of attributes named "Pokemon" and under the keys " name," "nature," "moves," "ability," and "item," and send it to teambuilderviewcontroller
         
-        var pokemon = [String: [String]]()
+        // var pokemon = [String: [String]]()
         /*
          pseudocode:
          
@@ -45,155 +45,121 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
     }
     
 
-    /*
-
+    // Call this once to dismiss open keyboards by tapping anywhere in the view controller
+    func setupHideKeyboardOnTap() {
+        self.view.addGestureRecognizer(self.endEditingRecognizer())
+        self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
+    }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    // Dismisses the keyboard from self.view
+    private func endEditingRecognizer() -> UIGestureRecognizer {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        return tap
+    }
+    
+    var searchActive : Bool = false
+
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = true;
     }
 
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchActive = false;
     }
 
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
     }
 
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
     }
-
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
- 
- */
-
+    
+    // todo: take care of the repeated api calls
    
+    // to pass into the next screen
+    
+    var pokemonName: String = ""
+    var pokemonId: Int = -1
+    var abilityArray: [String] = [String]()
+    var moveArray: [String] = [String]()
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchActive)
+        
+        /*
+        if (!searchActive) {
+            PokemonAPI().pokemonService.fetchPokemon(searchText.lowercased()) { result in
+                
+                switch result {
+                case .success(let pokemon):
+                    // set up data
+                    // any and all print statements below are for debug purposes
+                    
+                    // get pokemon name
+                    print(pokemon.name)
+                    self.pokemonName = pokemon.name!
+                    
+                    // get pokemon id
+                    print(pokemon.id)
+                    self.pokemonId = pokemon.id!
+                    
+                    print(pokemon.abilities?[0].ability?.name)
+                    
+                    // data for ability picker
+                    
+                    print(pokemon.abilities?.count)
 
-        PokemonAPI().pokemonService.fetchPokemon(searchText.lowercased()) { result in
-            
-            switch result {
-            case .success(let pokemon):
-                // set up data
-                // any and all print statements below are for debug purposes
-                // get pokemon name
-                print(pokemon.name)
-                
-                // todo: get a pic of the pokemon!
-                
-                print(pokemon.abilities?[0].ability?.name)
-                
-                // data for ability picker
-                var abilityArray: [String] = [String]()
-                
-                print(pokemon.abilities?.count)
+                    for i in 0..<pokemon.abilities!.count {
+                        self.abilityArray.append((pokemon.abilities?[i].ability?.name)!)
+                    }
+                    
+                    print(self.abilityArray)
 
-                for i in 0..<pokemon.abilities!.count {
-                    abilityArray.append((pokemon.abilities?[i].ability?.name)!)
-                }
-                
-                print(abilityArray)
-
-            
-                // data for move picker
-                var moveArray: [String] = [String]()
-                
-                print(pokemon.moves?.count)
-                
-                for i in 0..<pokemon.moves!.count {
-                    moveArray.append((pokemon.moves?[i].move?.name)!)
-                }
-                
-                print(moveArray)
-                
-                
-                
-                DispatchQueue.main.async {
-                    self.debuggingLabel.text = pokemon.name
-                    
-                    // todo: display abilities in picker
+                    // data for move picker
                     
                     
-                    // todo: display moves in picker
+                    print(pokemon.moves?.count)
                     
+                    for i in 0..<pokemon.moves!.count {
+                        self.moveArray.append((pokemon.moves?[i].move?.name)!)
+                    }
                     
-                    // todo: add an "add move" button n "remove move" button
+                    print(self.moveArray)
                     
                     
                     
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-                DispatchQueue.main.async {
-                    self.debuggingLabel.text = "Pokemon not found"
+                    DispatchQueue.main.async {
+                        self.debuggingLabel.text = pokemon.name
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    DispatchQueue.main.async {
+                        self.debuggingLabel.text = "Pokemon not found"
+                    }
                 }
             }
         }
         
-        
-        
-
-        
-        
+        */
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! PokemonBuilderViewController
+        
+        destination.pokemonName = self.pokemonName
+        destination.pokemonId = self.pokemonId
+        destination.abilityArray = self.abilityArray
+        destination.moveArray = self.moveArray
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        //abilityPicker.delegate = self
-        //abilityPicker.dataSource = self
-
-        // Do any additional setup after loading the view.
-        
-        // todo: when i figure out how to extract
-        // the natures and items
-        // via this api,
-        // the natures and held items for
-        // this details page will be implemented.
-        
-        // load natures
-        
-        var natureArray: [String] = [String]()
         
         
-        PokemonAPI().pokemonService.fetchNatureList(paginationState: .initial(pageLimit: 25)) { result in
-            switch result {
-            case .success(let pagedNatures):
-                print("\(pagedNatures.count!)") // 25
-                print(pagedNatures.results?[0])
-
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-            }
-
-        
-        
-        // load items
-        var itemArray: [String] = [String]()
-        
-        PokemonAPI().itemService.fetchItemList(paginationState: .initial(pageLimit: 25)) { result in
-            switch result {
-            case .success(let pagedItems):
-                print("\(pagedItems.count!)") // 25
-                print(pagedItems.results?[0])
-
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-        /*
-         PokemonAPI().pokemonService.fetchNatureList(paginationState: .continuing(pagedNatures, .next)) { result in
-             switch result {
-             case .success(let pagedNaturesNext):
-                 print("Page: \(pagedNaturesNext.currentPage)") // Page: 1
-                 print(pagedNaturesNext.results?.first?.url)
-             case .failure(let error):
-                 print(error.localizedDescription)
-             }
-         }
-         */
-
+        self.setupHideKeyboardOnTap()
         
     }
     
