@@ -15,13 +15,23 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var newPasswordField: UITextField!
     @IBOutlet weak var confirmPasswordField: UITextField!
     
+    // Call this once to dismiss open keyboards by tapping anywhere in the view controller
+    func setupHideKeyboardOnTap() {
+        self.view.addGestureRecognizer(self.endEditingRecognizer())
+        self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
+    }
+    
+    // Dismisses the keyboard from self.view
+    private func endEditingRecognizer() -> UIGestureRecognizer {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        return tap
+    }
     
     @IBAction func onCreateAccount(_ sender: Any) {
         let user = PFUser()
         user.username = newUsernameField.text
         user.password = newPasswordField.text
-        
-        
         
         user.signUpInBackground { (success, error) in
             if success {
@@ -37,6 +47,7 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.setupHideKeyboardOnTap()
     }
     
 
