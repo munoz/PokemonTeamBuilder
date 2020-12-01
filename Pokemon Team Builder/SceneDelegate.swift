@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if PFUser.current() != nil {
             let main = UIStoryboard(name: "Main", bundle: nil)
             self.window = UIWindow(windowScene: windowScene)
-            self.window?.rootViewController = main.instantiateViewController(withIdentifier: "LoggedInViewController")
+            self.window?.rootViewController = main.instantiateViewController(withIdentifier: "UserTabBarController")
             print("window %@", window!)
             self.window?.makeKeyAndVisible()
         }

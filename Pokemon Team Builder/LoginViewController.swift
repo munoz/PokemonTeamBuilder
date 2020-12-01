@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
         PFUser.logInWithUsername(inBackground: username, password: password)
         { (user, error) in
             if user != nil {
-                self.performSegue(withIdentifier: "logInSegue", sender: nil)
+                self.performSegue(withIdentifier: "tabSegue", sender: nil)
             } else {
                 print("Error: \(error?.localizedDescription)")
             }

@@ -36,7 +36,7 @@ class SignUpViewController: UIViewController {
         user.signUpInBackground { (success, error) in
             if success {
                 //need to create main page then login segue
-                self.performSegue(withIdentifier: "signUpSegue", sender: nil)
+                self.performSegue(withIdentifier: "signupTabSegue", sender: nil)
             } else {
                 print("Error: \(error?.localizedDescription)")
             }
