@@ -45,29 +45,38 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
     }
     
 
-    /*
-
+    // Call this once to dismiss open keyboards by tapping anywhere in the view controller
+    func setupHideKeyboardOnTap() {
+        self.view.addGestureRecognizer(self.endEditingRecognizer())
+        self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
+    }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    // Dismisses the keyboard from self.view
+    private func endEditingRecognizer() -> UIGestureRecognizer {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        return tap
+    }
+    
+    var searchActive : Bool = false
+
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = true;
     }
 
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchActive = false;
     }
 
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
     }
 
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
     }
-
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
- 
- */
-
+    
+    // todo: take care of the repeated api calls
    
     // to pass into the next screen
     
@@ -77,57 +86,63 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
     var moveArray: [String] = [String]()
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchActive)
+        
+        /*
+        if (!searchActive) {
+            PokemonAPI().pokemonService.fetchPokemon(searchText.lowercased()) { result in
+                
+                switch result {
+                case .success(let pokemon):
+                    // set up data
+                    // any and all print statements below are for debug purposes
+                    
+                    // get pokemon name
+                    print(pokemon.name)
+                    self.pokemonName = pokemon.name!
+                    
+                    // get pokemon id
+                    print(pokemon.id)
+                    self.pokemonId = pokemon.id!
+                    
+                    print(pokemon.abilities?[0].ability?.name)
+                    
+                    // data for ability picker
+                    
+                    print(pokemon.abilities?.count)
 
-        PokemonAPI().pokemonService.fetchPokemon(searchText.lowercased()) { result in
-            
-            switch result {
-            case .success(let pokemon):
-                // set up data
-                // any and all print statements below are for debug purposes
-                
-                // get pokemon name
-                print(pokemon.name)
-                self.pokemonName = pokemon.name!
-                
-                // get pokemon id
-                print(pokemon.id)
-                self.pokemonId = pokemon.id!
-                
-                print(pokemon.abilities?[0].ability?.name)
-                
-                // data for ability picker
-                
-                print(pokemon.abilities?.count)
+                    for i in 0..<pokemon.abilities!.count {
+                        self.abilityArray.append((pokemon.abilities?[i].ability?.name)!)
+                    }
+                    
+                    print(self.abilityArray)
 
-                for i in 0..<pokemon.abilities!.count {
-                    self.abilityArray.append((pokemon.abilities?[i].ability?.name)!)
-                }
-                
-                print(self.abilityArray)
-
-                // data for move picker
-                
-                
-                print(pokemon.moves?.count)
-                
-                for i in 0..<pokemon.moves!.count {
-                    self.moveArray.append((pokemon.moves?[i].move?.name)!)
-                }
-                
-                print(self.moveArray)
-                
-                
-                
-                DispatchQueue.main.async {
-                    self.debuggingLabel.text = pokemon.name
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-                DispatchQueue.main.async {
-                    self.debuggingLabel.text = "Pokemon not found"
+                    // data for move picker
+                    
+                    
+                    print(pokemon.moves?.count)
+                    
+                    for i in 0..<pokemon.moves!.count {
+                        self.moveArray.append((pokemon.moves?[i].move?.name)!)
+                    }
+                    
+                    print(self.moveArray)
+                    
+                    
+                    
+                    DispatchQueue.main.async {
+                        self.debuggingLabel.text = pokemon.name
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    DispatchQueue.main.async {
+                        self.debuggingLabel.text = "Pokemon not found"
+                    }
                 }
             }
         }
+        
+        */
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -142,7 +157,9 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-
+        
+        
+        self.setupHideKeyboardOnTap()
         
     }
     

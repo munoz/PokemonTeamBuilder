@@ -11,6 +11,27 @@ import Parse
 import PokemonAPI
 
 class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    @IBOutlet weak var move1TextField: UITextField!
+    @IBOutlet weak var move2TextField: UITextField!
+    @IBOutlet weak var move3TextField: UITextField!
+    @IBOutlet weak var move4TextField: UITextField!
+    @IBOutlet weak var abilityTextField: UITextField!
+    @IBOutlet weak var natureTextField: UITextField!
+    @IBOutlet weak var genderTextField: UITextField!
+    @IBOutlet weak var itemTextField: UITextField!
+    
+    var move1PickerView = UIPickerView()
+    var move2PickerView = UIPickerView()
+    var move3PickerView = UIPickerView()
+    var move4PickerView = UIPickerView()
+    var abilityPickerView = UIPickerView()
+    var naturePickerView = UIPickerView()
+    var genderPickerView = UIPickerView()
+    var itemPickerView = UIPickerView()
+    
+    
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -20,23 +41,46 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
         // i will refer to https://www.youtube.com/watch?v=BTKhVkcezBk to do this stuff
         switch pickerView.tag {
         case 1:
-            return 1 // move 1
+            return moveArray.count // move 1
         case 2:
-            return 1 // move 2
+            return moveArray.count // move 2
         case 3:
-            return 1 // move 3
+            return moveArray.count // move 3
         case 4:
-            return 1 // move 4
+            return moveArray.count // move 4
         case 5:
-            return 1 // ability
+            return abilityArray.count // ability
         case 6:
-            return 1 // nature
+            return natureArray.count // nature
         case 7:
-            return 1 // gender
+            return genders.count // gender
         case 8:
             return 1 // item
         default:
             return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch pickerView.tag {
+        case 1:
+            return moveArray[row] // move 1
+        case 2:
+            return moveArray[row] // move 2
+        case 3:
+            return moveArray[row] // move 3
+        case 4:
+            return moveArray[row] // move 4
+        case 5:
+            return abilityArray[row] // ability
+        case 6:
+            return natureArray[row] // nature
+        case 7:
+            return genders[row] // gender
+        case 8:
+            return "curently a placeholder" // item
+        default:
+            return "Data not found."
         }
     }
     
@@ -49,10 +93,16 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
     var abilityArray: [String] = [String]()
     var moveArray: [String] = [String]()
     
+    var natureArray: [String] = [String]()
+    
+    var items = [PFObject]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+
         
         // to prove that data was passed through
         print(self.pokemonName)
@@ -60,7 +110,7 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
         
         // fetch natures
         
-        var natureArray: [String] = [String]()
+        
         
         PokemonAPI().pokemonService.fetchNatureList(paginationState: .initial(pageLimit: 25)) { result in
             switch result {
@@ -85,7 +135,7 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
                         for i in 0..<25 {
                             let nature = result[i] as! [String: String]
                             
-                            natureArray.append(nature["name"]!)
+                            self.natureArray.append(nature["name"]!)
                         }
                     } else {
                        print("no file")
@@ -98,6 +148,55 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
             }
         }
         
+        move1TextField.inputView = move1PickerView
+        move2TextField.inputView = move2PickerView
+        move3TextField.inputView = move3PickerView
+        move4TextField.inputView = move4PickerView
+        abilityTextField.inputView = abilityPickerView
+        natureTextField.inputView = naturePickerView
+        genderTextField.inputView = genderPickerView
+        itemTextField.inputView = itemPickerView
+        
+        move1TextField.placeholder = "Move 1"
+        move2TextField.placeholder = "Move 2"
+        move3TextField.placeholder = "Move 3"
+        move4TextField.placeholder = "Move 4"
+        abilityTextField.placeholder = "Ability"
+        natureTextField.placeholder = "Nature"
+        genderTextField.placeholder = "Gender"
+        itemTextField.placeholder = "Item"
+        
+        move1PickerView.delegate = self
+        move2PickerView.delegate = self
+        move3PickerView.delegate = self
+        move4PickerView.delegate = self
+        abilityPickerView.delegate = self
+        naturePickerView.delegate = self
+        genderPickerView.delegate = self
+        itemPickerView.delegate = self
+        
+        move1PickerView.dataSource = self
+        move2PickerView.dataSource = self
+        move3PickerView.dataSource = self
+        move4PickerView.dataSource = self
+        abilityPickerView.dataSource = self
+        naturePickerView.dataSource = self
+        genderPickerView.dataSource = self
+        itemPickerView.dataSource = self
+        
+        move1PickerView.tag = 1
+        move2PickerView.tag = 2
+        move3PickerView.tag = 3
+        move4PickerView.tag = 4
+        abilityPickerView.tag = 5
+        naturePickerView.tag = 6
+        genderPickerView.tag = 7
+        itemPickerView.tag = 8
+        
+        
+        
+        
+        /*
         // fetch items
         
         var itemArray: [String] = [String]()
@@ -139,6 +238,8 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
                 print(error.localizedDescription)
             }
         }
+        */
+
 
 
     }
