@@ -8,9 +8,14 @@
 
 import UIKit
 import Parse
+import AlamofireImage
 
-class LoggedInViewController: UIViewController {
-
+class LoggedInViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var teamTableView: UITableView!
+    
+    var teams = [PFObject]()
+    
     @IBAction func onLogout(_ sender: Any) {
         PFUser.logOut()
         
@@ -26,18 +31,57 @@ class LoggedInViewController: UIViewController {
         super.viewDidLoad()
         
         let currentUser = PFUser.current()!
-        
+        teamTableView.dataSource = self
+        teamTableView.delegate = self
         /*
          todo: query the current user's teams and display them on this screen
          */
         
-        
-        
-        
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let query = PFQuery(className: "Team")
+        query.includeKey("userID")
     
+        query.findObjectsInBackground { (teams, error) in
+            if teams != nil {
+                self.teams = teams!
+                self.teamTableView.reloadData()
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return teams.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TeamTableViewCell") as! TeamTableViewCell
+        
+        let team = teams[indexPath.row]
+        
+        cell.teamNameLabel.text = team["teamName"] as? String
+        
+//        let url = URL(fileURLWithPath: "/PokemonTeamBuilder/bower_components/pokemon-sprites/sprites/pokemon/model/1.png")
+        
+//        let imageData:NSData = NSData(contentsOf: url)!
+        
+//        let image = UIImage(data: imageData as Data)
+        
+        cell.pokeOneImage.image = UIImage(named: "1.png")
+        cell.pokeTwoImage.image = UIImage(named: "2.png")
+        cell.pokeThreeImage.image = UIImage(named: "3.png")
+        cell.pokeFourImage.image = UIImage(named: "4.png")
+        cell.pokeFiveImage.image = UIImage(named: "5.png")
+        cell.pokeSixImage.image = UIImage(named: "6.png")
+        
+        
+        
+        return cell
+    }
     
 
 

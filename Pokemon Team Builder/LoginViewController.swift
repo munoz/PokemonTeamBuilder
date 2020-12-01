@@ -14,6 +14,18 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
 
+    // Call this once to dismiss open keyboards by tapping anywhere in the view controller
+    func setupHideKeyboardOnTap() {
+        self.view.addGestureRecognizer(self.endEditingRecognizer())
+        self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
+    }
+    
+    // Dismisses the keyboard from self.view
+    private func endEditingRecognizer() -> UIGestureRecognizer {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        return tap
+    }
     
     @IBAction func onLogin(_ sender: Any) {
         let username = usernameField.text!
@@ -24,17 +36,16 @@ class LoginViewController: UIViewController {
             if user != nil {
                 self.performSegue(withIdentifier: "logInSegue", sender: nil)
             } else {
-                print("Error: \(error?.localizedDescription)")            }
-            
+                print("Error: \(error?.localizedDescription)")
+            }
         }
     }
     
-    
-  
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.setupHideKeyboardOnTap()
     }
     
 
