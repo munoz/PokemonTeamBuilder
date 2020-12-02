@@ -13,6 +13,9 @@ class TeamCreatorViewController: UIViewController {
     
     @IBOutlet weak var teamNameLabel: UITextField!
     
+    let team = PFObject(className: "Team")
+    
+    
     // Call this once to dismiss open keyboards by tapping anywhere in the view controller
     func setupHideKeyboardOnTap() {
         self.view.addGestureRecognizer(self.endEditingRecognizer())
@@ -42,13 +45,13 @@ class TeamCreatorViewController: UIViewController {
         if teamNameLabel.text == "" {
             self.showToast(message: "Please enter a name!", font: .systemFont(ofSize: 12.0))
         } else {
-            let team = PFObject(className: "Team")
+            
 
-            team["teamName"] = teamNameLabel.text
-            team["pokeSprites"] = ["", "", "", "", "", ""]
-            team["userID"] = PFUser.current()!
+            self.team["teamName"] = teamNameLabel.text
+            self.team["pokeSprites"] = ["", "", "", "", "", ""]
+            self.team["userID"] = PFUser.current()!
 
-            team.saveInBackground { (success, error) in
+            self.team.saveInBackground { (success, error) in
                 if success {
                     self.performSegue(withIdentifier: "buildSegue", sender: nil)
                     print("saved!")
@@ -58,7 +61,13 @@ class TeamCreatorViewController: UIViewController {
             }
         }
     }
-        	
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! PokemonDetailsViewController
+        
+        destination.team = self.team
+
+    }
     // Source: https://stackoverflow.com/questions/31540375/how-to-toast-message-in-swift
     func showToast(message : String, font: UIFont) {
 

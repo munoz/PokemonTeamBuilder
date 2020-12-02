@@ -166,6 +166,8 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
    
     // to pass into the next screen
     
+    var team = PFObject(className: "Team")
+    
     var pokemonName: String = ""
     var pokemonId: Int = -1
     var abilityArray: [String] = [String]()
