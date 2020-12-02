@@ -31,6 +31,9 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
     var itemPickerView = UIPickerView()
     
     
+    @IBAction func onCancelButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -55,7 +58,7 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
         case 7:
             return genders.count // gender
         case 8:
-            return 1 // item
+            return items.count // item
         default:
             return 1
         }
@@ -78,13 +81,44 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
         case 7:
             return genders[row] // gender
         case 8:
-            return "curently a placeholder" // item
+            return items[row]["itemName"] as? String // item
         default:
             return "Data not found."
         }
     }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch pickerView.tag {
+        case 1:
+            move1TextField.text = moveArray[row] // move 1
+            move1TextField.resignFirstResponder()
+        case 2:
+            move2TextField.text = moveArray[row] // move 2
+            move2TextField.resignFirstResponder()
+        case 3:
+            move3TextField.text = moveArray[row] // move 3
+            move3TextField.resignFirstResponder()
+        case 4:
+            move4TextField.text = moveArray[row] // move 4
+            move4TextField.resignFirstResponder()
+        case 5:
+            abilityTextField.text = abilityArray[row] // ability
+            abilityTextField.resignFirstResponder()
+        case 6:
+            natureTextField.text = natureArray[row] // nature
+            natureTextField.resignFirstResponder()
+        case 7:
+            genderTextField.text = genders[row] // gender
+            genderTextField.resignFirstResponder()
+        case 8:
+            itemTextField.text = items[row]["itemName"] as? String // item
+            itemTextField.resignFirstResponder()
+        default:
+            return
+        }
+    }
     
+
     var genders: [String] = ["Male", "Female"]
     
     // data passed from the previous view controller
@@ -194,54 +228,22 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
         itemPickerView.tag = 8
         
         
+
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        
-        /*
-        // fetch items
-        
-        var itemArray: [String] = [String]()
-        
-        PokemonAPI().itemService.fetchItemList(paginationState: .initial(pageLimit: 954)) { result in
-            switch result {
-            case .success(let pagedItems):
-                print("\(pagedItems.count!)")
-                print(pagedItems.current)
-                
-                // get natures json
-                
-                do {
-                    if let file = URL(string: pagedItems.current) {
-                        let data = try Data(contentsOf: file)
-                        let json = try JSONSerialization.jsonObject(with: data, options: [])
-                        
-                        // extract nature from json
-                        
-                        let object = json as? [String: Any]
-                        
-                        let result = object?["results"] as! [Any]
-                        
-                        // push into items array
-                        for i in 0..<25 {
-                            let item = result[i] as! [String: String]
-                            
-                            itemArray.append(item["name"]!)
-                        }
-                        
-                        print(itemArray[0])
-                    } else {
-                       print("no file")
-                    }
-                } catch {
-                    print(error.localizedDescription)
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
+        let query = PFQuery(className: "Items")
+        query.includeKey("itemName")
+        query.limit = 187
+        query.findObjectsInBackground { (items, error) in
+            if items != nil {
+                self.items = items!
             }
         }
-        */
-
-
-
+        
     }
     
 
