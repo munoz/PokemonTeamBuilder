@@ -17,6 +17,11 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var abilityPicker: UIPickerView!
     
+    
+    @IBAction func onCancelTouch(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func onAddTouch(_ sender: Any) {
         if searchBar.text == "" || debuggingLabel.text == "Pokemon not found" {
             self.showToast(message: "Search valid Pokemon!", font: .systemFont(ofSize: 12.0))
@@ -28,66 +33,51 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
     
     @IBAction func onGetPokemon(_ sender: Any) {
         PokemonAPI().pokemonService.fetchPokemon(searchBar.text?.lowercased() ?? "") { result in
-            
+            DispatchQueue.main.async {
             if (self.searchBar.text != "") {
-                switch result {
-                case .success(let pokemon):
-                    // set up data
-                    // any and all print statements below are for debug purposes
-                    
-                    // get pokemon name
-                    print(pokemon.name)
-                    self.pokemonName = pokemon.name!
-                    
-                    // get pokemon id
-                    print(pokemon.id)
-                    self.pokemonId = pokemon.id!
-                    
-                    print(pokemon.abilities?[0].ability?.name)
-                    
-                    // data for ability picker
-                    print(pokemon.abilities?.count)
+                    switch result {
+                    case .success(let pokemon):
+                        // set up data
+                        // any and all print statements below are for debug purposes
+                        
+                        // get pokemon name
+                        print(pokemon.name)
+                        self.pokemonName = pokemon.name!
+                        
+                        // get pokemon id
+                        print(pokemon.id)
+                        self.pokemonId = pokemon.id!
+                        
+                        print(pokemon.abilities?[0].ability?.name)
+                        
+                        // data for ability picker
+                        print(pokemon.abilities?.count)
 
-                    for i in 0..<pokemon.abilities!.count {
-                        self.abilityArray.append((pokemon.abilities?[i].ability?.name)!)
-                    }
-                    
-                    print(self.abilityArray)
+                        for i in 0..<pokemon.abilities!.count {
+                            self.abilityArray.append((pokemon.abilities?[i].ability?.name)!)
+                        }
+                        
+                        print(self.abilityArray)
 
-                    // data for move picker
-                    print(pokemon.moves?.count)
-                    
-                    for i in 0..<pokemon.moves!.count {
-                        self.moveArray.append((pokemon.moves?[i].move?.name)!)
-                    }
-                    
-                    print(self.moveArray)
-                    
-                    DispatchQueue.main.async {
+                        // data for move picker
+                        print(pokemon.moves?.count)
+                        
+                        for i in 0..<pokemon.moves!.count {
+                            self.moveArray.append((pokemon.moves?[i].move?.name)!)
+                        }
+                        
+                        print(self.moveArray)
+                        
                         self.debuggingLabel.text = pokemon.name
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                    DispatchQueue.main.async {
+
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                        
                         self.debuggingLabel.text = "Pokemon not found"
                     }
                 }
             }
         }
-    }
-    
-    @IBAction func OnAddPokemon(_ sender: Any) {        // todo: with the data on the page, make a dictionary of attributes named "Pokemon" and under the keys " name," "nature," "moves," "ability," and "item," and send it to teambuilderviewcontroller
-        
-        // var pokemon = [String: [String]]()
-        /*
-         pseudocode:
-         
-         Pokemon["Name"] = searchbar.text.lowercased()
-         Pokemon["Nature"] = nature picker value
-         Pokemon["Moves"] = [array of moves from the four fields]
-         Pokemon["Item"] = item picker value
-         
-         */
     }
     
     // Call this once to dismiss open keyboards by tapping anywhere in the view controller
@@ -157,12 +147,16 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
    
     // to pass into the next screen
     
+    // data passed in from previous view
     var team = PFObject(className: "Team")
+    var pokemonPlaceInTeam: Int = -1
     
     var pokemonName: String = ""
     var pokemonId: Int = -1
     var abilityArray: [String] = [String]()
     var moveArray: [String] = [String]()
+    
+    
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
  
@@ -205,11 +199,6 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
             toastLabel.removeFromSuperview()
         })
     }
-    
-    /*
-     todo: query the pokemon and fetch the natures, moves
-     and any other attributes that the pokemon has
-     */
 
 
     /*

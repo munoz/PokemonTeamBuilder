@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XQv-96-ihU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -348,7 +348,7 @@
         <!--Team Builder V iew Controller-->
         <scene sceneID="R3q-Ud-wze">
             <objects>
-                <viewController id="wg3-Jh-GFq" customClass="TeamBuilderViewController" customModule="Pokemon_Team_Builder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeamBuilderViewController" id="wg3-Jh-GFq" customClass="TeamBuilderViewController" customModule="Pokemon_Team_Builder" customModuleProvider="target" sceneMemberID="viewController">
                     <string key="title" base64-UTF8="YES">
 VGVhbSBCdWlsZGVyIFYIaWV3IENvbnRyb2xsZXI
 </string>
@@ -356,35 +356,45 @@ VGVhbSBCdWlsZGVyIFYIaWV3IENvbnRyb2xsZXI
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTK-d6-rsQ">
-                                <rect key="frame" x="184" y="233" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTK-d6-rsQ">
+                                <rect key="frame" x="53" y="150" width="96" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="0"/>
+                                <connections>
+                                    <action selector="onEditFirstPokemon:" destination="wg3-Jh-GFq" eventType="touchUpInside" id="awi-8d-UB5"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9I4-PE-ZZV">
-                                <rect key="frame" x="184" y="290" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9I4-PE-ZZV">
+                                <rect key="frame" x="51" y="296" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="0"/>
+                                <connections>
+                                    <action selector="onEditSecondPokemon:" destination="wg3-Jh-GFq" eventType="touchUpInside" id="AJ9-PZ-f33"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgB-9h-BsQ">
-                                <rect key="frame" x="184" y="345" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgB-9h-BsQ">
+                                <rect key="frame" x="53" y="445" width="96" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="0"/>
+                                <connections>
+                                    <action selector="onEditThirdPokemon:" destination="wg3-Jh-GFq" eventType="touchUpInside" id="kFu-Hj-Qft"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CUW-OC-I0G">
-                                <rect key="frame" x="184" y="394" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NK9-Qh-97u">
+                                <rect key="frame" x="273" y="296" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="0"/>
+                                <connections>
+                                    <action selector="onEditFifthPokemon:" destination="wg3-Jh-GFq" eventType="touchUpInside" id="XwZ-LT-ren"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NK9-Qh-97u">
-                                <rect key="frame" x="184" y="433" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSv-AU-KV5">
+                                <rect key="frame" x="273" y="443" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSv-AU-KV5">
-                                <rect key="frame" x="184" y="491" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="0"/>
+                                <connections>
+                                    <action selector="onEditSixthPokemon:" destination="wg3-Jh-GFq" eventType="touchUpInside" id="pF5-jr-P5c"/>
+                                </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V9F-rd-swX">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -395,37 +405,54 @@ VGVhbSBCdWlsZGVyIFYIaWV3IENvbnRyb2xsZXI
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CUW-OC-I0G">
+                                <rect key="frame" x="273" y="148" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="0"/>
+                                <connections>
+                                    <action selector="onEditFourthPokemon:" destination="wg3-Jh-GFq" eventType="touchUpInside" id="cJs-8D-JdF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="l5x-st-GZ2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="fifthPokemonButton" destination="NK9-Qh-97u" id="nPR-gu-PAT"/>
+                        <outlet property="firstPokemonButton" destination="GTK-d6-rsQ" id="Hu0-ah-4nb"/>
+                        <outlet property="fourthPokemonButton" destination="CUW-OC-I0G" id="jkb-p4-H07"/>
+                        <outlet property="secondPokemonButton" destination="9I4-PE-ZZV" id="5bQ-0v-J1l"/>
+                        <outlet property="sixthPokemonButton" destination="KSv-AU-KV5" id="dcV-5J-zb7"/>
+                        <outlet property="thirdPokemonButton" destination="dgB-9h-BsQ" id="92o-aO-i95"/>
+                        <segue destination="XQv-96-ihU" kind="presentation" identifier="pokemonSearchSegue" id="viu-mp-8av"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNN-LC-NEt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2117" y="217"/>
+            <point key="canvasLocation" x="2115.9420289855075" y="216.96428571428569"/>
         </scene>
         <!--Pokemon Details View Controller-->
         <scene sceneID="p9E-04-jX2">
             <objects>
                 <viewController storyboardIdentifier="PokemonDetailsViewController" id="XQv-96-ihU" customClass="PokemonDetailsViewController" customModule="Pokemon_Team_Builder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rlg-mA-Rvt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6b-NC-XfW">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Pokemon Details" id="Y6W-HK-U7C">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="1qS-Ky-gOV">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="dsA-cG-YYm">
-                                                <rect key="frame" x="20" y="7" width="92" height="30"/>
+                                                <rect key="frame" x="20" y="13" width="92" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Cancel"/>
-                                                <connections>
-                                                    <segue destination="wg3-Jh-GFq" kind="presentation" id="oAh-Qb-ZQN"/>
-                                                </connections>
                                             </button>
+                                            <connections>
+                                                <action selector="onCancelTouch:" destination="XQv-96-ihU" id="6ed-5p-nJc"/>
+                                            </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Add" id="KNt-IA-Gks">
                                             <connections>
@@ -435,11 +462,6 @@ VGVhbSBCdWlsZGVyIFYIaWV3IENvbnRyb2xsZXI
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qOd-ng-LBj">
-                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZE-3g-eUd">
                                 <rect key="frame" x="141" y="150" width="93" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -455,6 +477,11 @@ VGVhbSBCdWlsZGVyIFYIaWV3IENvbnRyb2xsZXI
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qOd-ng-LBj">
+                                <rect key="frame" x="0.0" y="60" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1dN-iC-oen"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -744,10 +771,10 @@ VGVhbSBCdWlsZGVyIFYIaWV3IENvbnRyb2xsZXI
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="oAh-Qb-ZQN"/>
         <segue reference="BiC-1a-Wqw"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="0" width="96" height="96"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <namedColor name="Cerulean Blue">
             <color red="0.23137254901960785" green="0.29803921568627451" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

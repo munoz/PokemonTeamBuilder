@@ -77,6 +77,8 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
             self.showToast(message: "Select at least one Move!", font: .systemFont(ofSize: 12.0))
         }
         
+
+        
     }
     
     // Checks that at least one move was chosen
@@ -136,8 +138,7 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        // any and all things here are placeholders.
-        // i will refer to https://www.youtube.com/watch?v=BTKhVkcezBk to do this stuff
+        // source: https://www.youtube.com/watch?v=BTKhVkcezBk
         switch pickerView.tag {
         case 1:
             return moveArray.count // move 1
