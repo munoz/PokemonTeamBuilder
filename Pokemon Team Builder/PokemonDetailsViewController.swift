@@ -14,11 +14,17 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
     
     
     @IBOutlet weak var debuggingLabel: UILabel! // displays the first result of pokemon search
-    
-    
     @IBOutlet weak var searchBar: UISearchBar!
-    
     @IBOutlet weak var abilityPicker: UIPickerView!
+    
+    @IBAction func onAddTouch(_ sender: Any) {
+        if searchBar.text == "" || debuggingLabel.text == "Pokemon not found" {
+            self.showToast(message: "Search valid Pokemon!", font: .systemFont(ofSize: 12.0))
+        } else {
+            self.performSegue(withIdentifier: "pokeBuildSegue", sender: nil)
+        }
+    }
+    
     
     @IBAction func onGetPokemon(_ sender: Any) {
         PokemonAPI().pokemonService.fetchPokemon(searchBar.text?.lowercased() ?? "") { result in
@@ -40,7 +46,6 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
                     print(pokemon.abilities?[0].ability?.name)
                     
                     // data for ability picker
-                    
                     print(pokemon.abilities?.count)
 
                     for i in 0..<pokemon.abilities!.count {
@@ -50,8 +55,6 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
                     print(self.abilityArray)
 
                     // data for move picker
-                    
-                    
                     print(pokemon.moves?.count)
                     
                     for i in 0..<pokemon.moves!.count {
@@ -59,8 +62,6 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
                     }
                     
                     print(self.moveArray)
-                    
-                    
                     
                     DispatchQueue.main.async {
                         self.debuggingLabel.text = pokemon.name
@@ -73,9 +74,7 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
                 }
             }
         }
-
     }
-    
     
     @IBAction func OnAddPokemon(_ sender: Any) {        // todo: with the data on the page, make a dictionary of attributes named "Pokemon" and under the keys " name," "nature," "moves," "ability," and "item," and send it to teambuilderviewcontroller
         
@@ -91,7 +90,6 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
          */
     }
     
-
     // Call this once to dismiss open keyboards by tapping anywhere in the view controller
     func setupHideKeyboardOnTap() {
         self.view.addGestureRecognizer(self.endEditingRecognizer())
@@ -104,10 +102,8 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
         tap.cancelsTouchesInView = false
         return tap
     }
-    
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
         PokemonAPI().pokemonService.fetchPokemon(searchBar.text?.lowercased() ?? "") { result in
             
             if (self.searchBar.text != "") {
@@ -127,7 +123,6 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
                     print(pokemon.abilities?[0].ability?.name)
                     
                     // data for ability picker
-                    
                     print(pokemon.abilities?.count)
 
                     for i in 0..<pokemon.abilities!.count {
@@ -137,8 +132,6 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
                     print(self.abilityArray)
 
                     // data for move picker
-                    
-                    
                     print(pokemon.moves?.count)
                     
                     for i in 0..<pokemon.moves!.count {
@@ -146,9 +139,7 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
                     }
                     
                     print(self.moveArray)
-                    
-                    
-                    
+
                     DispatchQueue.main.async {
                         self.debuggingLabel.text = pokemon.name
                     }
@@ -193,6 +184,26 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
         
         self.setupHideKeyboardOnTap()
         
+    }
+    
+    // Source: https://stackoverflow.com/questions/31540375/how-to-toast-message-in-swift
+    func showToast(message : String, font: UIFont) {
+
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = font
+        toastLabel.textAlignment = .center;
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+             toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
     }
     
     /*
