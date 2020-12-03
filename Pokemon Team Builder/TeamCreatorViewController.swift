@@ -48,7 +48,7 @@ class TeamCreatorViewController: UIViewController {
             
 
             self.team["teamName"] = teamNameLabel.text
-            self.team["pokeSprites"] = ["", "", "", "", "", ""]
+            self.team["pokeSprites"] = ["0", "0", "0", "0", "0", "0"]
             self.team["userID"] = PFUser.current()!
 
             self.team.saveInBackground { (success, error) in
@@ -63,7 +63,7 @@ class TeamCreatorViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! PokemonDetailsViewController
+        let destination = segue.destination as! TeamBuilderViewController
         
         destination.team = self.team
 
