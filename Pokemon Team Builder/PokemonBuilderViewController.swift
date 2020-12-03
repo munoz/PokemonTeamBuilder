@@ -30,10 +30,106 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
     var genderPickerView = UIPickerView()
     var itemPickerView = UIPickerView()
     
+    // Call this once to dismiss open keyboards by tapping anywhere in the view controller
+    func setupHideKeyboardOnTap() {
+        self.view.addGestureRecognizer(self.endEditingRecognizer())
+        self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
+    }
     
+    // Dismisses the keyboard from self.view
+    private func endEditingRecognizer() -> UIGestureRecognizer {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        return tap
+    }
+        
     @IBAction func onCancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
+    @IBAction func onSaveTouch(_ sender: Any) {
+        
+        if checkMoves() {
+            if checkDuplicateMoves() {
+                if checkANG().0 {
+                    
+                    let pokemon = PFObject(className: "Pokemon")
+                    
+                    pokemon["moveset"] = [move1TextField.text, move2TextField.text, move3TextField.text, move4TextField.text]
+                    pokemon["ability"] = abilityTextField.text
+                    pokemon["nature"] = natureTextField.text
+                    pokemon["gender"] = genderTextField.text
+                    pokemon["item"] = itemTextField.text
+                    pokemon["pokeID"] = pokemonId
+                    
+                    // For the whole proccess to work, it needs
+                    // the team object. Remember that this is a pointer to the team.
+//                    pokemon["teamID"] =
+                    
+                } else {
+                    self.showToast(message: "Please Select \(checkANG().1)!", font: .systemFont(ofSize: 12.0))
+                }
+            } else {
+                self.showToast(message: "No Duplicate Moves!", font: .systemFont(ofSize: 12.0))
+            }
+        } else {
+            self.showToast(message: "Select at least one Move!", font: .systemFont(ofSize: 12.0))
+        }
+        
+    }
+    
+    // Checks that at least one move was chosen
+    func checkMoves() -> Bool {
+        if move1TextField.text == "" && move2TextField.text == "" && move3TextField.text == "" && move4TextField.text == "" {
+            return false
+        } else if move1TextField.text != "" || move2TextField.text != "" || move3TextField.text != "" || move4TextField.text != "" {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    // Checks that no two same moves are chosen
+    func checkDuplicateMoves() -> Bool {
+        var moves = [String]()
+        
+        if move1TextField.text != "" {
+            moves.append(move1TextField.text ?? "not move")
+        }
+        
+        if move2TextField.text != "" {
+            moves.append(move2TextField.text ?? "not move")
+        }
+        
+        if move3TextField.text != "" {
+            moves.append(move3TextField.text ?? "not move")
+        }
+        
+        if move4TextField.text != "" {
+            moves.append(move4TextField.text ?? "not move")
+        }
+        
+        return moves.count == Set(moves).count
+    }
+    
+    // Checks for no empty Ability, Nature, and Gender
+    func checkANG() -> (Bool, String) {
+        if abilityTextField.text == "" {
+            return (false, "Ability")
+        }
+        
+        if natureTextField.text == "" {
+            return (false, "Nature")
+        }
+        
+        if genderTextField.text == "" {
+            return (false, "Gender")
+        }
+        return (true, "Pass")
+    }
+    
+    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -135,7 +231,7 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
+        self.setupHideKeyboardOnTap()
 
         
         // to prove that data was passed through
@@ -244,6 +340,26 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
             }
         }
         
+    }
+    
+    // Source: https://stackoverflow.com/questions/31540375/how-to-toast-message-in-swift
+    func showToast(message : String, font: UIFont) {
+
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = font
+        toastLabel.textAlignment = .center;
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+             toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
     }
     
 

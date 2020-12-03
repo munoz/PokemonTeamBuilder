@@ -68,6 +68,7 @@ class TeamCreatorViewController: UIViewController {
         destination.team = self.team
 
     }
+    
     // Source: https://stackoverflow.com/questions/31540375/how-to-toast-message-in-swift
     func showToast(message : String, font: UIFont) {
 
