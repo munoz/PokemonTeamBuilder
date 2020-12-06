@@ -79,21 +79,68 @@
             </objects>
             <point key="canvasLocation" x="-633" y="-920"/>
         </scene>
-        <!--Item 2-->
+        <!--Profile View Controller-->
         <scene sceneID="psF-Xx-ijk">
             <objects>
-                <viewController id="Csc-2J-bD2" sceneMemberID="viewController">
+                <viewController title="Profile View Controller" id="Csc-2J-bD2" customClass="ProfileViewController" customModule="Pokemon_Team_Builder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A3K-wO-nWC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rcn-ee-OL0">
+                                <rect key="frame" x="164" y="337" width="86" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7u6-bK-YIP">
+                                <rect key="frame" x="160" y="559" width="80" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutButton:" destination="Csc-2J-bD2" eventType="touchUpInside" id="5CJ-cr-qzk"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="HKn-jP-TUe">
+                                <rect key="frame" x="125" y="144.5" width="165" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="165" id="F5V-55-RLu"/>
+                                    <constraint firstAttribute="width" constant="165" id="JWd-7H-Uf4"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WK7-g6-4rt">
+                                <rect key="frame" x="144" y="374" width="112" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="gtH-au-vS2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HKn-jP-TUe" firstAttribute="top" secondItem="gtH-au-vS2" secondAttribute="top" constant="143" id="1gO-PB-A73"/>
+                            <constraint firstItem="Rcn-ee-OL0" firstAttribute="top" secondItem="HKn-jP-TUe" secondAttribute="bottom" constant="29" id="8JT-IJ-Zn7"/>
+                            <constraint firstItem="gtH-au-vS2" firstAttribute="trailing" secondItem="Rcn-ee-OL0" secondAttribute="trailing" constant="164" id="BR5-8X-pHj"/>
+                            <constraint firstItem="7u6-bK-YIP" firstAttribute="centerX" secondItem="WK7-g6-4rt" secondAttribute="centerX" id="EHq-kc-zgU"/>
+                            <constraint firstItem="7u6-bK-YIP" firstAttribute="top" secondItem="WK7-g6-4rt" secondAttribute="bottom" constant="156" id="JTc-Dq-cEQ"/>
+                            <constraint firstItem="Rcn-ee-OL0" firstAttribute="leading" secondItem="gtH-au-vS2" secondAttribute="leading" constant="164" id="VZU-rU-STA"/>
+                            <constraint firstItem="7u6-bK-YIP" firstAttribute="leading" secondItem="gtH-au-vS2" secondAttribute="leading" constant="160" id="Yvn-jd-V3t"/>
+                            <constraint firstItem="gtH-au-vS2" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WK7-g6-4rt" secondAttribute="trailing" id="cmY-dZ-2jq"/>
+                            <constraint firstItem="WK7-g6-4rt" firstAttribute="leading" secondItem="gtH-au-vS2" secondAttribute="leading" constant="144" id="erf-sE-mew"/>
+                            <constraint firstItem="WK7-g6-4rt" firstAttribute="top" secondItem="Rcn-ee-OL0" secondAttribute="bottom" constant="8" symbolic="YES" id="g6E-Hf-f9x"/>
+                            <constraint firstItem="HKn-jP-TUe" firstAttribute="leading" secondItem="gtH-au-vS2" secondAttribute="leading" constant="125" id="h3i-az-RSH"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="dh3-Ue-ctu"/>
+                    <tabBarItem key="tabBarItem" title="My Profile" image="person.circle" catalog="system" id="dh3-Ue-ctu"/>
+                    <connections>
+                        <outlet property="profileImage" destination="HKn-jP-TUe" id="qcn-Nf-VHh"/>
+                        <outlet property="usernameLabel" destination="WK7-g6-4rt" id="V3k-gD-trG"/>
+                        <outlet property="welcomeLabel" destination="Rcn-ee-OL0" id="8Cs-Qn-Ko0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkW-Wk-b8E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1454" y="-704"/>
+            <point key="canvasLocation" x="1658" y="-734"/>
         </scene>
         <!--Share View Controller-->
         <scene sceneID="bxk-kD-kCU">
@@ -598,6 +645,8 @@ VGVhbSBCdWlsZGVyIFYIaWV3IENvbnRyb2xsZXI
     <resources>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <namedColor name="Cerulean Blue">
             <color red="0.23137254901960785" green="0.29803921568627451" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

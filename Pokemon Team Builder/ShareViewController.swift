@@ -27,8 +27,11 @@ class ShareViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        let currentUser = PFUser.current()
+        let currentID = PFUser.current()!["userID"] as? String ?? "userID"
+        
         let query = PFQuery(className: "Team")
-        query.includeKey("userID")
+        query.includeKey(currentID)
     
         query.findObjectsInBackground { (teams, error) in
             if teams != nil {
