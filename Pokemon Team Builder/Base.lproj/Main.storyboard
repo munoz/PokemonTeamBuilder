@@ -138,26 +138,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VhE-va-aaO">
-                                <rect key="frame" x="0.0" y="34" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Pokemon Team Lists" id="Bfp-BF-vmS">
-                                        <barButtonItem key="leftBarButtonItem" title="Create Team" id="rmH-nV-e34">
-                                            <connections>
-                                                <segue destination="Ar5-t4-fHH" kind="presentation" id="ds1-Vv-ehu"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Logout" id="Oe8-UZ-avz">
-                                            <connections>
-                                                <action selector="onLogout:" destination="aLZ-hL-b0W" id="4yu-X1-6Na"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gUf-rz-WJM">
-                                <rect key="frame" x="0.0" y="78" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="840"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -241,9 +223,31 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VhE-va-aaO">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <items>
+                                    <navigationItem title="Pokemon Team Lists" id="Bfp-BF-vmS">
+                                        <barButtonItem key="leftBarButtonItem" title="Create Team" id="rmH-nV-e34">
+                                            <connections>
+                                                <segue destination="Ar5-t4-fHH" kind="presentation" id="ds1-Vv-ehu"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Logout" id="Oe8-UZ-avz">
+                                            <connections>
+                                                <action selector="onLogout:" destination="aLZ-hL-b0W" id="4yu-X1-6Na"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gAR-Pb-NVe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VhE-va-aaO" firstAttribute="trailing" secondItem="gAR-Pb-NVe" secondAttribute="trailing" id="6Nk-YC-qA1"/>
+                            <constraint firstItem="VhE-va-aaO" firstAttribute="leading" secondItem="gAR-Pb-NVe" secondAttribute="leading" id="tRg-Hk-vj8"/>
+                            <constraint firstItem="VhE-va-aaO" firstAttribute="top" secondItem="gAR-Pb-NVe" secondAttribute="top" id="wFt-uy-J2N"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Teams" image="house.fill" catalog="system" id="5PX-Uu-lq5"/>
                     <connections>
@@ -252,7 +256,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZT-2P-hfJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="213" y="217"/>
+            <point key="canvasLocation" x="211.59420289855075" y="216.96428571428569"/>
         </scene>
         <!--Team Creator View Controller-->
         <scene sceneID="PxX-Kr-3be">
@@ -439,19 +443,13 @@ VGVhbSBCdWlsZGVyIFYIaWV3IENvbnRyb2xsZXI
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6b-NC-XfW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g6b-NC-XfW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                 <items>
                                     <navigationItem title="Pokemon Details" id="Y6W-HK-U7C">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="1qS-Ky-gOV">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="dsA-cG-YYm">
-                                                <rect key="frame" x="20" y="13" width="92" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Cancel"/>
-                                            </button>
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="HdQ-ob-5UH">
                                             <connections>
-                                                <action selector="onCancelTouch:" destination="XQv-96-ihU" id="6ed-5p-nJc"/>
+                                                <action selector="onCancelTouch:" destination="XQv-96-ihU" id="NmI-QM-R9y"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Add" id="KNt-IA-Gks">
@@ -485,6 +483,11 @@ VGVhbSBCdWlsZGVyIFYIaWV3IENvbnRyb2xsZXI
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1dN-iC-oen"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="g6b-NC-XfW" firstAttribute="trailing" secondItem="1dN-iC-oen" secondAttribute="trailing" id="Rc2-JS-tgz"/>
+                            <constraint firstItem="g6b-NC-XfW" firstAttribute="top" secondItem="1dN-iC-oen" secondAttribute="top" id="X5d-x9-pmB"/>
+                            <constraint firstItem="g6b-NC-XfW" firstAttribute="leading" secondItem="1dN-iC-oen" secondAttribute="leading" id="eqm-uV-uPv"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="abilityPicker" destination="yB4-L7-Dt2" id="T5r-nA-Kkd"/>

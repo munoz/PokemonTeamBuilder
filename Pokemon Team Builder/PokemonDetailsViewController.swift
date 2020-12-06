@@ -17,10 +17,11 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var abilityPicker: UIPickerView!
     
-    
     @IBAction func onCancelTouch(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
     
     @IBAction func onAddTouch(_ sender: Any) {
         if searchBar.text == "" || debuggingLabel.text == "Pokemon not found" {
