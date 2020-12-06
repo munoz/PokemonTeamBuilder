@@ -172,6 +172,7 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
         destination.pokemonId = self.pokemonId
         destination.abilityArray = self.abilityArray
         destination.moveArray = self.moveArray
+        destination.pokemonPlaceInTeam = self.pokemonPlaceInTeam
     }
     
     override func viewDidLoad() {

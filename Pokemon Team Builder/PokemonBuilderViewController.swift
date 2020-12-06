@@ -11,6 +11,7 @@ import Parse
 import PokemonAPI
 
 class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    let pokemon = PFObject(className: "Pokemon")
     
     @IBOutlet weak var move1TextField: UITextField!
     @IBOutlet weak var move2TextField: UITextField!
@@ -54,18 +55,26 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
             if checkDuplicateMoves() {
                 if checkANG().0 {
                     
-                    let pokemon = PFObject(className: "Pokemon")
-                    
                     pokemon["moveset"] = [move1TextField.text, move2TextField.text, move3TextField.text, move4TextField.text]
                     pokemon["ability"] = abilityTextField.text
                     pokemon["nature"] = natureTextField.text
                     pokemon["gender"] = genderTextField.text
                     pokemon["item"] = itemTextField.text
-                    pokemon["pokeID"] = pokemonId
+                    pokemon["pokeID"] = String(pokemonId)
+                    pokemon["teamID"] = team
                     
-                    // For the whole proccess to work, it needs
-                    // the team object. Remember that this is a pointer to the team.
-//                    pokemon["teamID"] =
+                    var updateSprites = self.team["pokeSprites"] as! [String]
+                    updateSprites[pokemonPlaceInTeam] = String(pokemonId)
+                    self.team["pokeSprites"] = updateSprites
+                    
+                    self.pokemon.saveInBackground { (success, error) in
+                        if success {
+//                            self.performSegue(withIdentifier: "", sender: nil)
+                            print("saved!")
+                        } else {
+                            print("error!")
+                        }
+                    }
                     
                 } else {
                     self.showToast(message: "Please Select \(checkANG().1)!", font: .systemFont(ofSize: 12.0))
@@ -224,6 +233,7 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
     var abilityArray: [String] = [String]()
     var moveArray: [String] = [String]()
     var team = PFObject(className: "Team")
+    var pokemonPlaceInTeam: Int = -1
     
     var natureArray: [String] = [String]()
     
