@@ -166,6 +166,8 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! PokemonBuilderViewController
         
+        destination.team = self.team
+        
         destination.pokemonName = self.pokemonName
         destination.pokemonId = self.pokemonId
         destination.abilityArray = self.abilityArray

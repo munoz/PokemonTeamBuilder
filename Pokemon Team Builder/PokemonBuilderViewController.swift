@@ -223,6 +223,7 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
     var pokemonId: Int = -1
     var abilityArray: [String] = [String]()
     var moveArray: [String] = [String]()
+    var team = PFObject(className: "Team")
     
     var natureArray: [String] = [String]()
     
