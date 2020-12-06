@@ -69,7 +69,7 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
                     
                     self.pokemon.saveInBackground { (success, error) in
                         if success {
-//                            self.performSegue(withIdentifier: "", sender: nil)
+                            self.performSegue(withIdentifier: "contTeamBuilderSegue", sender: nil)
                             print("saved!")
                         } else {
                             print("error!")
@@ -85,9 +85,13 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
         } else {
             self.showToast(message: "Select at least one Move!", font: .systemFont(ofSize: 12.0))
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! TeamBuilderViewController
         
+        destination.team = self.team
 
-        
     }
     
     // Checks that at least one move was chosen
