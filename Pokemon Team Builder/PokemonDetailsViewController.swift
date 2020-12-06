@@ -97,52 +97,54 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         PokemonAPI().pokemonService.fetchPokemon(searchBar.text?.lowercased() ?? "") { result in
             
-            if (self.searchBar.text != "") {
-                switch result {
-                case .success(let pokemon):
-                    // set up data
-                    // any and all print statements below are for debug purposes
+            DispatchQueue.main.async {
+                if (self.searchBar.text != "") {
                     
-                    // get pokemon name
-                    print(pokemon.name)
-                    self.pokemonName = pokemon.name!
-                    
-                    // get pokemon id
-                    print(pokemon.id)
-                    self.pokemonId = pokemon.id!
-                    
-                    print(pokemon.abilities?[0].ability?.name)
-                    
-                    // data for ability picker
-                    print(pokemon.abilities?.count)
+                    switch result {
+                    case .success(let pokemon):
+                        // set up data
+                        // any and all print statements below are for debug purposes
+                        
+                        // get pokemon name
+                        print(pokemon.name)
+                        self.pokemonName = pokemon.name!
+                        
+                        // get pokemon id
+                        print(pokemon.id)
+                        self.pokemonId = pokemon.id!
+                        
+                        print(pokemon.abilities?[0].ability?.name)
+                        
+                        // data for ability picker
+                        print(pokemon.abilities?.count)
 
-                    for i in 0..<pokemon.abilities!.count {
-                        self.abilityArray.append((pokemon.abilities?[i].ability?.name)!)
-                    }
-                    
-                    print(self.abilityArray)
+                        for i in 0..<pokemon.abilities!.count {
+                            self.abilityArray.append((pokemon.abilities?[i].ability?.name)!)
+                        }
+                        
+                        print(self.abilityArray)
 
-                    // data for move picker
-                    print(pokemon.moves?.count)
-                    
-                    for i in 0..<pokemon.moves!.count {
-                        self.moveArray.append((pokemon.moves?[i].move?.name)!)
-                    }
-                    
-                    print(self.moveArray)
+                        // data for move picker
+                        print(pokemon.moves?.count)
+                        
+                        for i in 0..<pokemon.moves!.count {
+                            self.moveArray.append((pokemon.moves?[i].move?.name)!)
+                        }
+                        
+                        print(self.moveArray)
 
-                    DispatchQueue.main.async {
+                        
                         self.debuggingLabel.text = pokemon.name
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                    DispatchQueue.main.async {
+                    case .failure(let error):
+                        print(error.localizedDescription)
                         self.debuggingLabel.text = "Pokemon not found"
+                        
                     }
                 }
             }
         }
     }
+        
     
     // todo: take care of the repeated api calls
    

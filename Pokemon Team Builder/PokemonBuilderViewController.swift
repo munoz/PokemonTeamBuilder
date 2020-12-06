@@ -88,10 +88,11 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! TeamBuilderViewController
-        
-        destination.team = self.team
-
+        if (segue.identifier == "contTeamBuilderSegue") {
+            let destination = segue.destination as! TeamBuilderViewController
+            
+            destination.team = self.team
+        }
     }
     
     // Checks that at least one move was chosen

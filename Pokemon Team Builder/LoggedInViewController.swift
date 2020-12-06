@@ -71,12 +71,14 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
         
 //        let image = UIImage(data: imageData as Data)
         
-        cell.pokeOneImage.image = UIImage(named: "1.png")
-        cell.pokeTwoImage.image = UIImage(named: "2.png")
-        cell.pokeThreeImage.image = UIImage(named: "3.png")
-        cell.pokeFourImage.image = UIImage(named: "4.png")
-        cell.pokeFiveImage.image = UIImage(named: "5.png")
-        cell.pokeSixImage.image = UIImage(named: "6.png")
+        let spriteArray = team["pokeSprites"] as! [String]
+        
+        cell.pokeOneImage.image = UIImage(named: (spriteArray[0] + ".png"))
+        cell.pokeTwoImage.image = UIImage(named: (spriteArray[1] + ".png"))
+        cell.pokeThreeImage.image = UIImage(named: (spriteArray[2] + ".png"))
+        cell.pokeFourImage.image = UIImage(named: (spriteArray[3] + ".png"))
+        cell.pokeFiveImage.image = UIImage(named: (spriteArray[4] + ".png"))
+        cell.pokeSixImage.image = UIImage(named: (spriteArray[5] + ".png"))
         
         
         

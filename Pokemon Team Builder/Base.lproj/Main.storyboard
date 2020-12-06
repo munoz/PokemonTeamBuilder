@@ -333,6 +333,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="xen-Lq-NJi">
                                             <connections>
                                                 <action selector="onCancel:" destination="Ar5-t4-fHH" id="qAS-aN-8lL"/>
+                                                <segue destination="aLZ-hL-b0W" kind="presentation" identifier="cancelSegue" id="MAg-Wq-fie"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -436,7 +437,12 @@ VGVhbSBCdWlsZGVyIFYIaWV3IENvbnRyb2xsZXI
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Team Builder" id="kjW-Ov-Pth">
-                                        <barButtonItem key="rightBarButtonItem" title="Save" id="mkp-wa-MGp"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="mkp-wa-MGp">
+                                            <connections>
+                                                <action selector="onSaveTeam:" destination="wg3-Jh-GFq" id="oei-xo-jIz"/>
+                                                <segue destination="aLZ-hL-b0W" kind="presentation" identifier="saveSegue" id="L1L-HU-89p"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -798,7 +804,8 @@ VGVhbSBCdWlsZGVyIFYIaWV3IENvbnRyb2xsZXI
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yng-1j-r5S"/>
+        <segue reference="JsZ-dx-a5M"/>
+        <segue reference="MAg-Wq-fie"/>
         <segue reference="BiC-1a-Wqw"/>
     </inferredMetricsTieBreakers>
     <resources>

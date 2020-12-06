@@ -37,7 +37,7 @@ class TeamCreatorViewController: UIViewController {
     }
     
     @IBAction func onCancel(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "cancelSegue", sender: nil)
     }
     
     @IBAction func onCreateButton(_ sender: Any) {
@@ -63,10 +63,11 @@ class TeamCreatorViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! TeamBuilderViewController
-        
-        destination.team = self.team
-
+        if (segue.identifier != "cancelSegue") {
+            let destination = segue.destination as! TeamBuilderViewController
+            
+            destination.team = self.team
+        }
     }
     
     // Source: https://stackoverflow.com/questions/31540375/how-to-toast-message-in-swift

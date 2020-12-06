@@ -29,16 +29,8 @@ import PokemonAPI
 class TeamBuilderViewController: UIViewController {
 
     @IBAction func onSaveTeam(_ sender: Any) {
-        /*
-        let team = PFObject(className: "Team")
-        team["User"] = currentUser
-        team["Pokemon"] = ["sdfsdklflskjdskljfskjfsklfjl", "this is a placeholer pay this no mind"]
-        
-        /*
-         add the team to the team database
-         */
-        
-        */
+
+        self.performSegue(withIdentifier: "saveSegue", sender: nil)
         
     }
     
@@ -46,10 +38,12 @@ class TeamBuilderViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if (segue.identifier != "saveSegue") {
         let destination = segue.destination as! PokemonDetailsViewController
         
         destination.team = self.team
         destination.pokemonPlaceInTeam = self.pokemonPlaceInTeam
+        }
     }
     
     
