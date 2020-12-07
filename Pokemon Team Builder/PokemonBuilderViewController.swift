@@ -13,6 +13,8 @@ import PokemonAPI
 class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     let pokemon = PFObject(className: "Pokemon")
     
+    @IBOutlet weak var instructionsLabel: UILabel!
+    
     @IBOutlet weak var move1TextField: UITextField!
     @IBOutlet weak var move2TextField: UITextField!
     @IBOutlet weak var move3TextField: UITextField!
@@ -248,6 +250,10 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        //set instructions
+        instructionsLabel.text = "Select Moves, an Ability, a Nature, a Gender, and an Item for your Pokemon to hold. Then tap Save to add the completed Pokemon to your team."
+        
         self.setupHideKeyboardOnTap()
 
         

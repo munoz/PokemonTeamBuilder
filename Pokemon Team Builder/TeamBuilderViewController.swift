@@ -46,7 +46,8 @@ class TeamBuilderViewController: UIViewController {
         }
     }
     
-    
+    @IBOutlet weak var instructionsLabel: UILabel!
+        
     @IBOutlet weak var firstPokemonButton: UIButton!
     @IBOutlet weak var secondPokemonButton: UIButton!
     @IBOutlet weak var thirdPokemonButton: UIButton!
@@ -131,7 +132,7 @@ class TeamBuilderViewController: UIViewController {
         sixthPokemonButton.setImage(UIImage(named: spriteArray[5] + ".png"), for: .normal)
  
         
-        
+        instructionsLabel.text = "Tap on a question mark to start building your Pokemon. Once you are done making your team, tap Save to finish your team."
         
         
         // Do any additional setup after loading the view.
