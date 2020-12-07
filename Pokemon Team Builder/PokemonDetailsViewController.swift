@@ -17,6 +17,10 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var abilityPicker: UIPickerView!
     
+    @IBOutlet weak var instructionsLabel: UILabel!    
+    @IBOutlet weak var resultImage: UIImageView!
+    
+    
     @IBAction func onCancelTouch(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -70,11 +74,13 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
                         print(self.moveArray)
                         
                         self.debuggingLabel.text = pokemon.name
+                        self.resultImage.image = UIImage(named: (String(self.pokemonId) + ".png"))
 
                     case .failure(let error):
                         print(error.localizedDescription)
                         
                         self.debuggingLabel.text = "Pokemon not found"
+                        self.resultImage.image = UIImage(named: ("0.png"))
                     }
                 }
             }
@@ -135,10 +141,12 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
 
                         
                         self.debuggingLabel.text = pokemon.name
+                        self.resultImage.image = UIImage(named: (String(self.pokemonId) + ".png"))
+                        
                     case .failure(let error):
                         print(error.localizedDescription)
                         self.debuggingLabel.text = "Pokemon not found"
-                        
+                        self.resultImage.image = UIImage(named: ("0.png"))
                     }
                 }
             }
@@ -181,6 +189,7 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
         super.viewDidLoad()
         searchBar.delegate = self
         
+        instructionsLabel.text = "Search for a Pokemon using the search bar. Search is not case-sensitive, but spelling matters. When you have your Pokemon, tap the Add button above to place it on your team."
         
         self.setupHideKeyboardOnTap()
         
