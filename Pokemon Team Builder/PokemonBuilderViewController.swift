@@ -11,10 +11,8 @@ import Parse
 import PokemonAPI
 
 class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    let pokemon = PFObject(className: "Pokemon")
     
     @IBOutlet weak var instructionsLabel: UILabel!
-    
     @IBOutlet weak var move1TextField: UITextField!
     @IBOutlet weak var move2TextField: UITextField!
     @IBOutlet weak var move3TextField: UITextField!
@@ -33,30 +31,30 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
     var genderPickerView = UIPickerView()
     var itemPickerView = UIPickerView()
     
-    // Call this once to dismiss open keyboards by tapping anywhere in the view controller
-    func setupHideKeyboardOnTap() {
-        self.view.addGestureRecognizer(self.endEditingRecognizer())
-        self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
-    }
+    let pokemon = PFObject(className: "Pokemon")
     
-    // Dismisses the keyboard from self.view
-    private func endEditingRecognizer() -> UIGestureRecognizer {
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
-        tap.cancelsTouchesInView = false
-        return tap
-    }
+    var genders: [String] = ["Male", "Female", "Unknown"]
+    var natureArray: [String] = [String]()
+    var items = [PFObject]()
+    
+    // data passed from the previous view controller
+    var pokemonName: String = ""
+    var pokemonId: Int = -1
+    var abilityArray: [String] = [String]()
+    var moveArray: [String] = [String]()
+    var team = PFObject(className: "Team")
+    var pokemonPlaceInTeam: Int = -1
+    
         
     @IBAction func onCancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
     @IBAction func onSaveTouch(_ sender: Any) {
-        
         if checkMoves() {
             if checkDuplicateMoves() {
                 if checkANG().0 {
-                    
+                    pokemon["pokeName"] = pokemonName
                     pokemon["moveset"] = [move1TextField.text, move2TextField.text, move3TextField.text, move4TextField.text]
                     pokemon["ability"] = abilityTextField.text
                     pokemon["nature"] = natureTextField.text
@@ -77,7 +75,6 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
                             print("error!")
                         }
                     }
-                    
                 } else {
                     self.showToast(message: "Please Select \(checkANG().1)!", font: .systemFont(ofSize: 12.0))
                 }
@@ -86,14 +83,6 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
             }
         } else {
             self.showToast(message: "Select at least one Move!", font: .systemFont(ofSize: 12.0))
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "contTeamBuilderSegue") {
-            let destination = segue.destination as! TeamBuilderViewController
-            
-            destination.team = self.team
         }
     }
     
@@ -144,10 +133,9 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
         if genderTextField.text == "" {
             return (false, "Gender")
         }
+        
         return (true, "Pass")
     }
-    
-    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -231,40 +219,15 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
         }
     }
     
-
-    var genders: [String] = ["Male", "Female"]
-    
-    // data passed from the previous view controller
-    var pokemonName: String = ""
-    var pokemonId: Int = -1
-    var abilityArray: [String] = [String]()
-    var moveArray: [String] = [String]()
-    var team = PFObject(className: "Team")
-    var pokemonPlaceInTeam: Int = -1
-    
-    var natureArray: [String] = [String]()
-    
-    var items = [PFObject]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
         //set instructions
-        instructionsLabel.text = "Select Moves, an Ability, a Nature, a Gender, and an Item for your Pokemon to hold. Then tap Save to add the completed Pokemon to your team."
+        instructionsLabel.text = "Required: Ability, Nature, Gender, and 1 move. No duplicate moves."
         
         self.setupHideKeyboardOnTap()
-
         
-        // to prove that data was passed through
-        print(self.pokemonName)
-        print(self.moveArray)
-        
-        // fetch natures
-        
-        
-        
+        // Fetch Natures
         PokemonAPI().pokemonService.fetchNatureList(paginationState: .initial(pageLimit: 25)) { result in
             switch result {
             case .success(let pagedNatures):
@@ -345,10 +308,6 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
         naturePickerView.tag = 6
         genderPickerView.tag = 7
         itemPickerView.tag = 8
-        
-        
-
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -362,12 +321,31 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
                 self.items = items!
             }
         }
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "contTeamBuilderSegue") {
+            let destination = segue.destination as! TeamBuilderViewController
+            
+            destination.team = self.team
+        }
+    }
+    
+    // Call this once to dismiss open keyboards by tapping anywhere in the view controller
+    func setupHideKeyboardOnTap() {
+        self.view.addGestureRecognizer(self.endEditingRecognizer())
+        self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
+    }
+    
+    // Dismisses the keyboard from self.view
+    private func endEditingRecognizer() -> UIGestureRecognizer {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        return tap
     }
     
     // Source: https://stackoverflow.com/questions/31540375/how-to-toast-message-in-swift
     func showToast(message : String, font: UIFont) {
-
         let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
         toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         toastLabel.textColor = UIColor.white
@@ -384,16 +362,4 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
             toastLabel.removeFromSuperview()
         })
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

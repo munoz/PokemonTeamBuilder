@@ -21,23 +21,20 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let main = UIStoryboard(name: "Main", bundle: nil)
         let loginViewController = main.instantiateViewController(withIdentifier: "LoginViewController")
-        
         let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
         
         sceneDelegate.window?.rootViewController = loginViewController
     }
     
+    @IBAction func onViewTouch(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "teamViewSegue", sender: sender)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let currentUser = PFUser.current()!
         teamTableView.dataSource = self
         teamTableView.delegate = self
-        /*
-         todo: query the current user's teams and display them on this screen
-         */
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -45,6 +42,7 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let query = PFQuery(className: "Team")
         query.includeKey("userID")
+        query.whereKey("userID" , equalTo: PFUser.current()!)
     
         query.findObjectsInBackground { (teams, error) in
             if teams != nil {
@@ -62,17 +60,9 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamTableViewCell") as! TeamTableViewCell
         
         let team = teams[indexPath.row]
-        
         cell.teamNameLabel.text = team["teamName"] as? String
         
-//        let url = URL(fileURLWithPath: "/PokemonTeamBuilder/bower_components/pokemon-sprites/sprites/pokemon/model/1.png")
-        
-//        let imageData:NSData = NSData(contentsOf: url)!
-        
-//        let image = UIImage(data: imageData as Data)
-        
         let spriteArray = team["pokeSprites"] as! [String]
-        
         cell.pokeOneImage.image = UIImage(named: (spriteArray[0] + ".png"))
         cell.pokeTwoImage.image = UIImage(named: (spriteArray[1] + ".png"))
         cell.pokeThreeImage.image = UIImage(named: (spriteArray[2] + ".png"))
@@ -80,19 +70,24 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.pokeFiveImage.image = UIImage(named: (spriteArray[4] + ".png"))
         cell.pokeSixImage.image = UIImage(named: (spriteArray[5] + ".png"))
         
-        
+        cell.viewTeamBtn.tag = indexPath.row
         
         return cell
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Change the selected background view of the cell.
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-    */
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "teamViewSegue") {
+            let index = (sender as! UIButton).tag
+            let team = teams[index]
+            
+            let destination = segue.destination as! TeamViewController
+            
+            destination.team = team
+        }
+    }
 }

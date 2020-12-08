@@ -17,7 +17,7 @@ class TeamTableViewCell: UITableViewCell {
     @IBOutlet weak var pokeFiveImage: UIImageView!
     @IBOutlet weak var pokeSixImage: UIImageView!
     @IBOutlet weak var teamNameLabel: UILabel!
-    
+    @IBOutlet weak var viewTeamBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

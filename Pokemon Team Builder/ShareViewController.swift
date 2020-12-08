@@ -20,19 +20,15 @@ class ShareViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         shareTableView.dataSource = self
         shareTableView.delegate = self
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let currentUser = PFUser.current()
-        let currentID = PFUser.current()!["userID"] as? String ?? "userID"
-        
         let query = PFQuery(className: "Team")
-        query.includeKey(currentID)
-    
+        query.includeKey("userID")
+        query.whereKey("userID" , equalTo: PFUser.current()!)
+
         query.findObjectsInBackground { (teams, error) in
             if teams != nil {
                 self.teams = teams!
