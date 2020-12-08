@@ -13,7 +13,27 @@ class SignUpViewController: UIViewController {
 
     @IBOutlet weak var newUsernameField: UITextField!
     @IBOutlet weak var newPasswordField: UITextField!
-    @IBOutlet weak var confirmPasswordField: UITextField!
+    
+    @IBAction func onCreateAccount(_ sender: Any) {
+        let user = PFUser()
+        user.username = newUsernameField.text
+        user.password = newPasswordField.text
+        
+        user.signUpInBackground { (success, error) in
+            if success {
+                //need to create main page then login segue
+                self.performSegue(withIdentifier: "signupTabSegue", sender: nil)
+            } else {
+                print("Error: \(String(describing: error?.localizedDescription))")
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.setupHideKeyboardOnTap()
+    }
     
     // Call this once to dismiss open keyboards by tapping anywhere in the view controller
     func setupHideKeyboardOnTap() {
@@ -27,38 +47,4 @@ class SignUpViewController: UIViewController {
         tap.cancelsTouchesInView = false
         return tap
     }
-    
-    @IBAction func onCreateAccount(_ sender: Any) {
-        let user = PFUser()
-        user.username = newUsernameField.text
-        user.password = newPasswordField.text
-        
-        user.signUpInBackground { (success, error) in
-            if success {
-                //need to create main page then login segue
-                self.performSegue(withIdentifier: "signupTabSegue", sender: nil)
-            } else {
-                print("Error: \(error?.localizedDescription)")
-            }
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        self.setupHideKeyboardOnTap()
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

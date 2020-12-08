@@ -12,20 +12,22 @@ import PokemonAPI
 
 class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
     
-    
     @IBOutlet weak var debuggingLabel: UILabel! // displays the first result of pokemon search
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var abilityPicker: UIPickerView!
-    
-    @IBOutlet weak var instructionsLabel: UILabel!    
     @IBOutlet weak var resultImage: UIImageView!
     
+    // data passed in from previous view
+    var team = PFObject(className: "Team")
+    var pokemonPlaceInTeam: Int = -1
+    var pokemonName: String = ""
+    var pokemonId: Int = -1
+    var abilityArray: [String] = [String]()
+    var moveArray: [String] = [String]()
     
     @IBAction func onCancelTouch(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
     
     @IBAction func onAddTouch(_ sender: Any) {
         if searchBar.text == "" || debuggingLabel.text == "Pokemon not found" {
@@ -34,7 +36,6 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
             self.performSegue(withIdentifier: "pokeBuildSegue", sender: nil)
         }
     }
-    
     
     @IBAction func onGetPokemon(_ sender: Any) {
         PokemonAPI().pokemonService.fetchPokemon(searchBar.text?.lowercased() ?? "") { result in
@@ -87,17 +88,11 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
         }
     }
     
-    // Call this once to dismiss open keyboards by tapping anywhere in the view controller
-    func setupHideKeyboardOnTap() {
-        self.view.addGestureRecognizer(self.endEditingRecognizer())
-        self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
-    }
-    
-    // Dismisses the keyboard from self.view
-    private func endEditingRecognizer() -> UIGestureRecognizer {
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
-        tap.cancelsTouchesInView = false
-        return tap
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        searchBar.delegate = self
+                
+        self.setupHideKeyboardOnTap()
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -152,23 +147,8 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
             }
         }
     }
-        
     
-    // todo: take care of the repeated api calls
-   
-    // to pass into the next screen
-    
-    // data passed in from previous view
-    var team = PFObject(className: "Team")
-    var pokemonPlaceInTeam: Int = -1
-    
-    var pokemonName: String = ""
-    var pokemonId: Int = -1
-    var abilityArray: [String] = [String]()
-    var moveArray: [String] = [String]()
-    
-    
-    
+    // Is this needed?
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
  
     }
@@ -185,19 +165,21 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
         destination.pokemonPlaceInTeam = self.pokemonPlaceInTeam
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        searchBar.delegate = self
-        
-        instructionsLabel.text = "Search for a Pokemon using the search bar. Search is not case-sensitive, but spelling matters. When you have your Pokemon, tap the Add button above to place it on your team."
-        
-        self.setupHideKeyboardOnTap()
-        
+    // Call this once to dismiss open keyboards by tapping anywhere in the view controller
+    func setupHideKeyboardOnTap() {
+        self.view.addGestureRecognizer(self.endEditingRecognizer())
+        self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
+    }
+    
+    // Dismisses the keyboard from self.view
+    private func endEditingRecognizer() -> UIGestureRecognizer {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        return tap
     }
     
     // Source: https://stackoverflow.com/questions/31540375/how-to-toast-message-in-swift
     func showToast(message : String, font: UIFont) {
-
         let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
         toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         toastLabel.textColor = UIColor.white
@@ -214,16 +196,4 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
             toastLabel.removeFromSuperview()
         })
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
