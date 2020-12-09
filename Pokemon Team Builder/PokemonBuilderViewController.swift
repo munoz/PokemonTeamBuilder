@@ -221,33 +221,23 @@ class PokemonBuilderViewController: UIViewController, UIPickerViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //set instructions
-        instructionsLabel.text = "Required: Ability, Nature, Gender, and 1 move. No duplicate moves."
-        
+
+        instructionsLabel.text = "Required: Ability, Nature, Gender, and 1 move. No duplicate moves."        
         self.setupHideKeyboardOnTap()
         
         // Fetch Natures
         PokemonAPI().pokemonService.fetchNatureList(paginationState: .initial(pageLimit: 25)) { result in
             switch result {
             case .success(let pagedNatures):
-                print("\(pagedNatures.count!)") // 25
-                print(pagedNatures.current)
-                
-                // get natures json
-                
                 do {
                     if let file = URL(string: pagedNatures.current) {
                         let data = try Data(contentsOf: file)
                         let json = try JSONSerialization.jsonObject(with: data, options: [])
                         
                         // extract nature from json
-                        
                         let object = json as? [String: Any]
-                        
                         let result = object?["results"] as! [Any]
                         
-                        // push into natures array
                         for i in 0..<25 {
                             let nature = result[i] as! [String: String]
                             

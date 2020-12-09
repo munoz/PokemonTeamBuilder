@@ -126,28 +126,51 @@
         <!--Profile View Controller-->
         <scene sceneID="psF-Xx-ijk">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pkW-Wk-b8E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController title="Profile View Controller" id="Csc-2J-bD2" customClass="ProfileViewController" customModule="Pokemon_Team_Builder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A3K-wO-nWC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1G3-To-XW9">
-                                <rect key="frame" x="124" y="202.5" width="166" height="162"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOH-ft-fTF">
+                                <rect key="frame" x="161" y="47" width="93" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="165" id="IvL-tf-WXL"/>
+                                    <constraint firstAttribute="height" constant="42" id="lqL-W4-RSj"/>
+                                    <constraint firstAttribute="width" constant="93" id="pPJ-YX-L5T"/>
                                 </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOH-ft-fTF">
-                                <rect key="frame" x="124" y="411" width="52" height="27"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XzV-b7-I3v">
-                                <rect key="frame" x="165" y="560" width="85" height="46"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zwu-Ku-V1l">
+                                <rect key="frame" x="20" y="97" width="374" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="ESt-ao-EbI"/>
+                                    <constraint firstAttribute="height" constant="42" id="6uq-lX-RCI"/>
+                                    <constraint firstAttribute="width" constant="374" id="7F4-8t-xq4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1G3-To-XW9">
+                                <rect key="frame" x="117" y="182.5" width="180" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="ahO-yn-n9W"/>
+                                    <constraint firstAttribute="height" constant="183" id="ykZ-dM-0Em"/>
+                                </constraints>
+                            </imageView>
+                            <searchBar contentMode="redraw" placeholder="What is your favorite Pokemon?" translatesAutoresizingMaskIntoConstraints="NO" id="Feg-hS-7W0">
+                                <rect key="frame" x="0.0" y="406" width="414" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="Piv-cw-RGP"/>
+                                    <constraint firstAttribute="height" constant="56" id="aEp-iu-WYg"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XzV-b7-I3v">
+                                <rect key="frame" x="165" y="646" width="85" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="9fx-ji-SQ2"/>
+                                    <constraint firstAttribute="height" constant="46" id="lWo-fS-vpx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="Logout"/>
@@ -155,33 +178,26 @@
                                     <action selector="logoutButton:" destination="Csc-2J-bD2" eventType="touchUpInside" id="b3A-B5-6Zo"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zwu-Ku-V1l">
-                                <rect key="frame" x="184" y="411" width="103" height="27"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="What is your favorite Pokemon?" translatesAutoresizingMaskIntoConstraints="NO" id="Feg-hS-7W0">
-                                <rect key="frame" x="0.0" y="465" width="414" height="56"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gtH-au-vS2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="gtH-au-vS2" firstAttribute="trailing" secondItem="1G3-To-XW9" secondAttribute="trailing" constant="124" id="6qj-KL-ydL"/>
-                            <constraint firstItem="gtH-au-vS2" firstAttribute="bottom" secondItem="XzV-b7-I3v" secondAttribute="bottom" constant="207" id="7Xj-rW-8uL"/>
-                            <constraint firstItem="gtH-au-vS2" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Zwu-Ku-V1l" secondAttribute="trailing" symbolic="YES" id="Gxe-EY-w3o"/>
-                            <constraint firstItem="Zwu-Ku-V1l" firstAttribute="baseline" secondItem="aOH-ft-fTF" secondAttribute="baseline" id="No4-IE-NlC"/>
-                            <constraint firstItem="1G3-To-XW9" firstAttribute="leading" secondItem="gtH-au-vS2" secondAttribute="leading" constant="124" id="PkD-TB-mKI"/>
-                            <constraint firstItem="aOH-ft-fTF" firstAttribute="leading" secondItem="1G3-To-XW9" secondAttribute="leading" id="U42-r1-83O"/>
-                            <constraint firstItem="XzV-b7-I3v" firstAttribute="top" secondItem="aOH-ft-fTF" secondAttribute="bottom" constant="122" id="bFM-pA-FBD"/>
-                            <constraint firstItem="gtH-au-vS2" firstAttribute="trailing" secondItem="XzV-b7-I3v" secondAttribute="trailing" constant="164" id="eov-hG-iEW"/>
-                            <constraint firstItem="1G3-To-XW9" firstAttribute="top" secondItem="gtH-au-vS2" secondAttribute="top" constant="157" id="fdW-AE-6EZ"/>
-                            <constraint firstItem="aOH-ft-fTF" firstAttribute="top" secondItem="1G3-To-XW9" secondAttribute="bottom" constant="45" id="j5S-92-Kmy"/>
-                            <constraint firstItem="Zwu-Ku-V1l" firstAttribute="leading" secondItem="aOH-ft-fTF" secondAttribute="trailing" constant="8" symbolic="YES" id="tnJ-VP-V4G"/>
-                            <constraint firstItem="XzV-b7-I3v" firstAttribute="leading" secondItem="gtH-au-vS2" secondAttribute="leading" constant="165" id="xuU-zh-f1g"/>
+                            <constraint firstItem="1G3-To-XW9" firstAttribute="leading" secondItem="gtH-au-vS2" secondAttribute="leading" constant="117" id="1Ha-CE-a6U"/>
+                            <constraint firstItem="Feg-hS-7W0" firstAttribute="trailing" secondItem="gtH-au-vS2" secondAttribute="trailing" id="9my-AQ-3kh"/>
+                            <constraint firstItem="Feg-hS-7W0" firstAttribute="leading" secondItem="gtH-au-vS2" secondAttribute="leading" id="K8d-p1-RYs"/>
+                            <constraint firstItem="Feg-hS-7W0" firstAttribute="top" secondItem="1G3-To-XW9" secondAttribute="bottom" constant="42" id="Kq2-hb-cRC"/>
+                            <constraint firstItem="XzV-b7-I3v" firstAttribute="top" secondItem="Feg-hS-7W0" secondAttribute="bottom" constant="184" id="LTb-vO-YfB"/>
+                            <constraint firstItem="gtH-au-vS2" firstAttribute="trailing" secondItem="1G3-To-XW9" secondAttribute="trailing" constant="117" id="PPP-Yd-3vG"/>
+                            <constraint firstItem="XzV-b7-I3v" firstAttribute="leading" secondItem="gtH-au-vS2" secondAttribute="leading" constant="165" id="Xcc-a0-lhn"/>
+                            <constraint firstItem="aOH-ft-fTF" firstAttribute="leading" secondItem="gtH-au-vS2" secondAttribute="leading" constant="161" id="bzl-1U-yP5"/>
+                            <constraint firstItem="gtH-au-vS2" firstAttribute="trailing" secondItem="Zwu-Ku-V1l" secondAttribute="trailing" constant="20" id="e86-fX-W1g"/>
+                            <constraint firstItem="gtH-au-vS2" firstAttribute="bottom" secondItem="XzV-b7-I3v" secondAttribute="bottom" constant="121" id="iXj-ug-vax"/>
+                            <constraint firstItem="1G3-To-XW9" firstAttribute="top" secondItem="Zwu-Ku-V1l" secondAttribute="bottom" constant="42" id="k7f-0F-72X"/>
+                            <constraint firstItem="gtH-au-vS2" firstAttribute="trailing" secondItem="XzV-b7-I3v" secondAttribute="trailing" constant="164" id="l17-wt-u35"/>
+                            <constraint firstItem="aOH-ft-fTF" firstAttribute="top" secondItem="gtH-au-vS2" secondAttribute="top" constant="3" id="nG0-oB-HLc"/>
+                            <constraint firstItem="Zwu-Ku-V1l" firstAttribute="top" secondItem="aOH-ft-fTF" secondAttribute="bottom" constant="8" symbolic="YES" id="qz0-Z0-nNd"/>
+                            <constraint firstItem="gtH-au-vS2" firstAttribute="trailing" secondItem="aOH-ft-fTF" secondAttribute="trailing" constant="160" id="xKD-Z3-1uK"/>
+                            <constraint firstItem="Zwu-Ku-V1l" firstAttribute="leading" secondItem="gtH-au-vS2" secondAttribute="leading" constant="20" id="xX8-2d-whR"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="dh3-Ue-ctu"/>
@@ -192,6 +208,7 @@
                         <outlet property="welcomeLabel" destination="aOH-ft-fTF" id="ayQ-zu-3xW"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pkW-Wk-b8E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1453.6231884057972" y="-744.64285714285711"/>
         </scene>
@@ -410,14 +427,9 @@
                                 <rect key="frame" x="0.0" y="34" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Pokemon Team Lists" id="Bfp-BF-vmS">
-                                        <barButtonItem key="leftBarButtonItem" title="Create Team" id="rmH-nV-e34">
+                                        <barButtonItem key="rightBarButtonItem" title="Create Team" id="rmH-nV-e34">
                                             <connections>
                                                 <segue destination="Ar5-t4-fHH" kind="presentation" id="ds1-Vv-ehu"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Logout" id="Oe8-UZ-avz">
-                                            <connections>
-                                                <action selector="onLogout:" destination="aLZ-hL-b0W" id="4yu-X1-6Na"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1372,7 +1384,7 @@ VGVhbSBCdWlsZGVyIFYIaWV3IENvbnRyb2xsZXI
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="JsZ-dx-a5M"/>
-        <segue reference="WkZ-IN-MCu"/>
+        <segue reference="ZP9-NM-w1e"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="0" width="96" height="96"/>
