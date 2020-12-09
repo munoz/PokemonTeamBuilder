@@ -126,6 +126,7 @@
         <!--Profile View Controller-->
         <scene sceneID="psF-Xx-ijk">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pkW-Wk-b8E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController title="Profile View Controller" id="Csc-2J-bD2" customClass="ProfileViewController" customModule="Pokemon_Team_Builder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A3K-wO-nWC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -160,6 +161,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="What is your favorite Pokemon?" translatesAutoresizingMaskIntoConstraints="NO" id="Feg-hS-7W0">
+                                <rect key="frame" x="0.0" y="465" width="414" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gtH-au-vS2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -181,11 +187,11 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="dh3-Ue-ctu"/>
                     <connections>
                         <outlet property="profileImage" destination="1G3-To-XW9" id="RcF-vp-g0W"/>
+                        <outlet property="searchBar" destination="Feg-hS-7W0" id="mHW-ta-q9I"/>
                         <outlet property="usernameLabel" destination="Zwu-Ku-V1l" id="oND-Y7-U9L"/>
                         <outlet property="welcomeLabel" destination="aOH-ft-fTF" id="ayQ-zu-3xW"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pkW-Wk-b8E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1453.6231884057972" y="-744.64285714285711"/>
         </scene>
@@ -791,7 +797,6 @@ VGVhbSBCdWlsZGVyIFYIaWV3IENvbnRyb2xsZXI
                                         <barButtonItem key="rightBarButtonItem" title="Save" id="mkp-wa-MGp">
                                             <connections>
                                                 <action selector="onSaveTeam:" destination="wg3-Jh-GFq" id="oei-xo-jIz"/>
-                                                <segue destination="cWM-Kr-H0G" kind="presentation" identifier="saveSegue" id="deV-Vz-Mgq"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -911,6 +916,7 @@ VGVhbSBCdWlsZGVyIFYIaWV3IENvbnRyb2xsZXI
                         <outlet property="sixthPokemonButton" destination="KSv-AU-KV5" id="dcV-5J-zb7"/>
                         <outlet property="thirdPokemonButton" destination="dgB-9h-BsQ" id="92o-aO-i95"/>
                         <segue destination="XQv-96-ihU" kind="presentation" identifier="pokemonSearchSegue" id="viu-mp-8av"/>
+                        <segue destination="cWM-Kr-H0G" kind="presentation" identifier="saveSegue" id="WkZ-IN-MCu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNN-LC-NEt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1366,7 +1372,7 @@ VGVhbSBCdWlsZGVyIFYIaWV3IENvbnRyb2xsZXI
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="JsZ-dx-a5M"/>
-        <segue reference="upN-X2-AFS"/>
+        <segue reference="WkZ-IN-MCu"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="0" width="96" height="96"/>
