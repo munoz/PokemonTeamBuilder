@@ -17,16 +17,6 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
     var teams = [PFObject]()
     let myRefreshControl = UIRefreshControl()
     
-    @IBAction func onLogout(_ sender: Any) {
-        PFUser.logOut()
-        
-        let main = UIStoryboard(name: "Main", bundle: nil)
-        let loginViewController = main.instantiateViewController(withIdentifier: "LoginViewController")
-        let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
-        
-        sceneDelegate.window?.rootViewController = loginViewController
-    }
-    
     @IBAction func onViewTouch(_ sender: UIButton) {
         self.performSegue(withIdentifier: "teamViewSegue", sender: sender)
     }

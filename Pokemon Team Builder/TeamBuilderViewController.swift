@@ -10,19 +10,6 @@ import UIKit
 import Parse
 import PokemonAPI
 
-/*
- todo: start using pokeapi, possibly install the pokeapi pod
- 
- schema:
- objectId    String    unique id for the team (default field)
- user    Pointer    Connect the team to its respective user
- team    Array    Consists of the pokemon team
- name    String    Name of the Team
- 
- team: array of dictionaries, representing pokemon and their attributes
- abilities, all that
-*/
-
 class TeamBuilderViewController: UIViewController {
 
     @IBOutlet weak var instructionsLabel: UILabel!
@@ -35,7 +22,6 @@ class TeamBuilderViewController: UIViewController {
     
     // data passed from previous view
     var team = PFObject(className: "Team")
-    
     var pokemonPlaceInTeam: Int = -1
     
     @IBAction func onSaveTeam(_ sender: Any) {
@@ -46,15 +32,12 @@ class TeamBuilderViewController: UIViewController {
         fourthPokemonButton.currentImage != UIImage(named: "0.png") ||
         fifthPokemonButton.currentImage != UIImage(named: "0.png") ||
         sixthPokemonButton.currentImage != UIImage(named: "0.png")
-        print(hasPokemon)
         
         if (hasPokemon) {
             self.performSegue(withIdentifier: "saveSegue", sender: nil)
-            print("cool")
         } else {
-            self.showToast(message: "One or more pokemon required!", font: .systemFont(ofSize: 12.0))
+            self.showToast(message: "One pokemon required!", font: .systemFont(ofSize: 12.0))
         }
-        
     }
     
     func segue(button: UIButton, place: Int) {
@@ -94,7 +77,6 @@ class TeamBuilderViewController: UIViewController {
         super.viewDidLoad()
         
         let spriteArray = team["pokeSprites"] as! [String]
-        
         firstPokemonButton.setImage(UIImage(named: spriteArray[0] + ".png"), for: .normal)
         secondPokemonButton.setImage(UIImage(named: spriteArray[1] + ".png"), for: .normal)
         thirdPokemonButton.setImage(UIImage(named: spriteArray[2] + ".png"), for: .normal)
@@ -105,14 +87,7 @@ class TeamBuilderViewController: UIViewController {
         instructionsLabel.text = "Tap on a question mark to start building your Pokemon. Once a Pokemon is build, it cannot be undone."
     }
     
-    /*
-     todo: if a button has a pokemon value attached to it, the pokemon values are edited instead of a new one being made
-           otherwise, a new pokemon is made each one of those buttons has a place, from 0 to 5.
-     */
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
         if (segue.identifier != "saveSegue") {
             let destination = segue.destination as! PokemonDetailsViewController
             

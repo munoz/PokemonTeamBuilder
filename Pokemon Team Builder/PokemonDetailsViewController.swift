@@ -44,42 +44,20 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
                     switch result {
                     case .success(let pokemon):
                         // set up data
-                        // any and all print statements below are for debug purposes
-                        
-                        // get pokemon name
-                        print(pokemon.name)
                         self.pokemonName = pokemon.name!
-                        
-                        // get pokemon id
-                        print(pokemon.id)
                         self.pokemonId = pokemon.id!
-                        
-                        print(pokemon.abilities?[0].ability?.name)
-                        
-                        // data for ability picker
-                        print(pokemon.abilities?.count)
+                        self.debuggingLabel.text = pokemon.name!
+                        self.resultImage.image = UIImage(named: (String(self.pokemonId) + ".png"))
 
                         for i in 0..<pokemon.abilities!.count {
                             self.abilityArray.append((pokemon.abilities?[i].ability?.name)!)
                         }
-                        
-                        print(self.abilityArray)
 
-                        // data for move picker
-                        print(pokemon.moves?.count)
-                        
                         for i in 0..<pokemon.moves!.count {
                             self.moveArray.append((pokemon.moves?[i].move?.name)!)
                         }
-                        
-                        print(self.moveArray)
-                        
-                        self.debuggingLabel.text = pokemon.name
-                        self.resultImage.image = UIImage(named: (String(self.pokemonId) + ".png"))
-
                     case .failure(let error):
                         print(error.localizedDescription)
-                        
                         self.debuggingLabel.text = "Pokemon not found"
                         self.resultImage.image = UIImage(named: ("0.png"))
                     }
@@ -90,54 +68,30 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         searchBar.delegate = self
-                
         self.setupHideKeyboardOnTap()
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         PokemonAPI().pokemonService.fetchPokemon(searchBar.text?.lowercased() ?? "") { result in
-            
             DispatchQueue.main.async {
                 if (self.searchBar.text != "") {
-                    
                     switch result {
                     case .success(let pokemon):
                         // set up data
-                        // any and all print statements below are for debug purposes
-                        
-                        // get pokemon name
-                        print(pokemon.name)
                         self.pokemonName = pokemon.name!
-                        
-                        // get pokemon id
-                        print(pokemon.id)
                         self.pokemonId = pokemon.id!
-                        
-                        print(pokemon.abilities?[0].ability?.name)
-                        
-                        // data for ability picker
-                        print(pokemon.abilities?.count)
+                        self.debuggingLabel.text = pokemon.name!
+                        self.resultImage.image = UIImage(named: (String(self.pokemonId) + ".png"))
 
                         for i in 0..<pokemon.abilities!.count {
                             self.abilityArray.append((pokemon.abilities?[i].ability?.name)!)
                         }
-                        
-                        print(self.abilityArray)
 
-                        // data for move picker
-                        print(pokemon.moves?.count)
-                        
                         for i in 0..<pokemon.moves!.count {
                             self.moveArray.append((pokemon.moves?[i].move?.name)!)
                         }
-                        
-                        print(self.moveArray)
-
-                        
-                        self.debuggingLabel.text = pokemon.name
-                        self.resultImage.image = UIImage(named: (String(self.pokemonId) + ".png"))
-                        
                     case .failure(let error):
                         print(error.localizedDescription)
                         self.debuggingLabel.text = "Pokemon not found"
@@ -146,11 +100,6 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
                 }
             }
         }
-    }
-    
-    // Is this needed?
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
- 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

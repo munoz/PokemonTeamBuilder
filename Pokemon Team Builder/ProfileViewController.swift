@@ -15,14 +15,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
-    }
-    
     
     @IBAction func logoutButton(_ sender: Any) {
         PFUser.logOut()
@@ -44,13 +37,8 @@ class ProfileViewController: UIViewController, UISearchBarDelegate {
                     switch result {
                     case .success(let pokemon):
                         let currentUser = PFUser.current()!
-
-                        // get pokemon id
-                        print(pokemon.id)
-                        
                         currentUser["favoritePoke"] = String(pokemon.id!) + ".png"
                         
-                        // register the change
                         currentUser.saveInBackground { (success, error) in
                             if success {
                                 print("saved!")
@@ -59,7 +47,6 @@ class ProfileViewController: UIViewController, UISearchBarDelegate {
                             }
                         }
                         
-                        // change image
                         self.profileImage.image = UIImage(named: (String(pokemon.id!) + ".png"))
                         
                     case .failure(let error):
@@ -73,6 +60,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         searchBar.delegate = self
         let currentUser = PFUser.current()!
         usernameLabel.text = currentUser["username"] as? String
@@ -80,8 +68,6 @@ class ProfileViewController: UIViewController, UISearchBarDelegate {
         self.profileImage.image = UIImage(named: favoriteMon)
         
         self.setupHideKeyboardOnTap()
-
-        // Do any additional setup after loading the view.
     }
     
     // Call this once to dismiss open keyboards by tapping anywhere in the view controller
@@ -98,7 +84,7 @@ class ProfileViewController: UIViewController, UISearchBarDelegate {
     }
     
     func showToast(message : String, font: UIFont) {
-        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-400, width: 150, height: 35))
         toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         toastLabel.textColor = UIColor.white
         toastLabel.font = font
@@ -114,15 +100,4 @@ class ProfileViewController: UIViewController, UISearchBarDelegate {
             toastLabel.removeFromSuperview()
         })
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
