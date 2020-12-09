@@ -39,7 +39,22 @@ class TeamBuilderViewController: UIViewController {
     var pokemonPlaceInTeam: Int = -1
     
     @IBAction func onSaveTeam(_ sender: Any) {
-        self.performSegue(withIdentifier: "saveSegue", sender: nil)
+        let hasPokemon =
+        firstPokemonButton.currentImage != UIImage(named: "0.png") ||
+        secondPokemonButton.currentImage != UIImage(named: "0.png") ||
+        thirdPokemonButton.currentImage != UIImage(named: "0.png") ||
+        fourthPokemonButton.currentImage != UIImage(named: "0.png") ||
+        fifthPokemonButton.currentImage != UIImage(named: "0.png") ||
+        sixthPokemonButton.currentImage != UIImage(named: "0.png")
+        print(hasPokemon)
+        
+        if (hasPokemon) {
+            self.performSegue(withIdentifier: "saveSegue", sender: nil)
+            print("cool")
+        } else {
+            self.showToast(message: "One or more pokemon required!", font: .systemFont(ofSize: 12.0))
+        }
+        
     }
     
     func segue(button: UIButton, place: Int) {
@@ -104,5 +119,23 @@ class TeamBuilderViewController: UIViewController {
             destination.team = self.team
             destination.pokemonPlaceInTeam = self.pokemonPlaceInTeam
         }
+    }
+    
+    func showToast(message : String, font: UIFont) {
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = font
+        toastLabel.textAlignment = .center;
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+             toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
     }
 }
