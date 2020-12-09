@@ -15,6 +15,7 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var teamTableView: UITableView!
     
     var teams = [PFObject]()
+    let myRefreshControl = UIRefreshControl()
     
     @IBAction func onLogout(_ sender: Any) {
         PFUser.logOut()
@@ -32,14 +33,22 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadTeams()
         
         teamTableView.dataSource = self
         teamTableView.delegate = self
+        
+        myRefreshControl.addTarget(self, action: #selector(loadTeams), for: .valueChanged)
+        teamTableView.refreshControl = myRefreshControl
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        loadTeams()
+    }
+    
+    @objc func loadTeams() {
         let query = PFQuery(className: "Team")
         query.includeKey("userID")
         query.whereKey("userID" , equalTo: PFUser.current()!)
@@ -48,6 +57,7 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
             if teams != nil {
                 self.teams = teams!
                 self.teamTableView.reloadData()
+                self.myRefreshControl.endRefreshing()
             }
         }
     }

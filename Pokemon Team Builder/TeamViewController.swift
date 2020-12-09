@@ -22,6 +22,34 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.performSegue(withIdentifier: "returnTeamsSegue", sender: nil)
     }
     
+    @IBAction func onDeleteTouch(_ sender: Any) {
+        let pokemon = PFQuery(className: "Pokemon")
+        
+        pokemon.whereKey("teamID", equalTo: team)
+        pokemon.findObjectsInBackground { (pkms, error) in
+            if error == nil {
+                for pkm in pkms ?? [] {
+                    pkm.deleteEventually()
+                }
+            }
+        }
+        
+        let query = PFQuery(className: "Team")
+        query.includeKey("userID")
+        query.whereKey("userID" , equalTo: PFUser.current()!)
+        query.whereKey("objectId", equalTo: team.objectId!)
+    
+        query.findObjectsInBackground { (teams, error) in
+            if teams != nil {
+                for team in teams ?? [] {
+                    team.deleteEventually()
+                }
+            }
+        }
+        
+        self.performSegue(withIdentifier: "returnTeamsSegue", sender: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

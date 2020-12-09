@@ -347,42 +347,43 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbe-d2-Klu">
-                                                    <rect key="frame" x="95" y="525" width="34" height="30"/>
+                                                    <rect key="frame" x="181" y="504" width="53" height="42"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="53" id="oCH-5T-i6f"/>
+                                                        <constraint firstAttribute="height" constant="42" id="rvy-EV-D94"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <state key="normal" title="View"/>
                                                     <connections>
                                                         <action selector="onViewTouch:" destination="aLZ-hL-b0W" eventType="touchUpInside" id="XHj-b0-TFr"/>
                                                         <segue destination="ylE-Pc-gks" kind="presentation" identifier="teamViewSegue" id="Z2S-EJ-Mhl"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0S-rt-xbC">
-                                                    <rect key="frame" x="281" y="525" width="45" height="30"/>
-                                                    <state key="normal" title="Delete"/>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="u8X-Py-c6Q" firstAttribute="top" secondItem="pUB-da-95p" secondAttribute="bottom" constant="35" id="1Cx-C2-6E9"/>
                                                 <constraint firstItem="u8X-Py-c6Q" firstAttribute="leading" secondItem="GIw-ZD-vdE" secondAttribute="leadingMargin" constant="32" id="1gm-c8-rlX"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="1kO-ba-7d7" secondAttribute="bottom" constant="68" id="2e0-cZ-wPJ"/>
                                                 <constraint firstItem="1kO-ba-7d7" firstAttribute="top" secondItem="tQj-tV-F4K" secondAttribute="bottom" constant="35" id="4km-4N-PK9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Cbe-d2-Klu" secondAttribute="trailing" constant="160" id="5Xm-H8-FVF"/>
+                                                <constraint firstItem="Cbe-d2-Klu" firstAttribute="leading" secondItem="GIw-ZD-vdE" secondAttribute="leadingMargin" constant="161" id="6jo-hS-wU7"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Cbe-d2-Klu" secondAttribute="bottom" constant="9" id="Ae9-Qp-GAn"/>
                                                 <constraint firstItem="tQj-tV-F4K" firstAttribute="top" secondItem="TJ8-SL-5TZ" secondAttribute="bottom" constant="35" id="BcX-fF-XnM"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="T0S-rt-xbC" secondAttribute="trailing" constant="68" id="FPD-gV-SLr"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="1kO-ba-7d7" secondAttribute="trailing" constant="31" id="I4d-yG-pih"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="u8X-Py-c6Q" secondAttribute="bottom" constant="68" id="J9N-Js-YAS"/>
                                                 <constraint firstItem="pbR-Gs-gHo" firstAttribute="trailing" secondItem="GIw-ZD-vdE" secondAttribute="trailingMargin" id="Jkg-r9-Wy0"/>
                                                 <constraint firstItem="pbR-Gs-gHo" firstAttribute="leading" secondItem="GIw-ZD-vdE" secondAttribute="leadingMargin" id="KN9-fN-5bI"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="TJ8-SL-5TZ" secondAttribute="trailing" constant="31" id="KeD-Df-TT7"/>
-                                                <constraint firstItem="T0S-rt-xbC" firstAttribute="top" secondItem="1kO-ba-7d7" secondAttribute="bottom" constant="38" id="Kwf-60-SVO"/>
+                                                <constraint firstItem="Cbe-d2-Klu" firstAttribute="top" secondItem="pbR-Gs-gHo" secondAttribute="bottom" constant="472" id="MBm-LW-bFN"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="tQj-tV-F4K" secondAttribute="trailing" constant="31" id="Tco-4q-UOx"/>
                                                 <constraint firstItem="aol-Zo-t2B" firstAttribute="top" secondItem="pbR-Gs-gHo" secondAttribute="bottom" constant="25" id="XF2-08-ax0"/>
                                                 <constraint firstItem="tQj-tV-F4K" firstAttribute="leading" secondItem="pUB-da-95p" secondAttribute="trailing" constant="71" id="caD-ha-Fmq"/>
                                                 <constraint firstItem="pUB-da-95p" firstAttribute="leading" secondItem="GIw-ZD-vdE" secondAttribute="leadingMargin" constant="32" id="cvH-pt-pNp"/>
-                                                <constraint firstItem="Cbe-d2-Klu" firstAttribute="leading" secondItem="GIw-ZD-vdE" secondAttribute="leadingMargin" constant="75" id="g6h-h0-vOk"/>
                                                 <constraint firstItem="pbR-Gs-gHo" firstAttribute="top" secondItem="GIw-ZD-vdE" secondAttribute="topMargin" id="ji8-v4-VYq"/>
-                                                <constraint firstItem="Cbe-d2-Klu" firstAttribute="bottom" secondItem="GIw-ZD-vdE" secondAttribute="bottomMargin" id="jrc-vl-bS7"/>
                                                 <constraint firstItem="aol-Zo-t2B" firstAttribute="leading" secondItem="GIw-ZD-vdE" secondAttribute="leadingMargin" constant="32" id="nfW-PE-doN"/>
                                                 <constraint firstItem="1kO-ba-7d7" firstAttribute="leading" secondItem="u8X-Py-c6Q" secondAttribute="trailing" constant="71" id="oiO-Hs-IY3"/>
                                                 <constraint firstItem="TJ8-SL-5TZ" firstAttribute="leading" secondItem="aol-Zo-t2B" secondAttribute="trailing" constant="71" id="oqL-4q-bjT"/>
                                                 <constraint firstItem="pUB-da-95p" firstAttribute="top" secondItem="aol-Zo-t2B" secondAttribute="bottom" constant="35" id="t5J-z7-rs5"/>
-                                                <constraint firstItem="T0S-rt-xbC" firstAttribute="bottom" secondItem="GIw-ZD-vdE" secondAttribute="bottomMargin" id="tgN-6d-JqL"/>
-                                                <constraint firstItem="Cbe-d2-Klu" firstAttribute="top" secondItem="u8X-Py-c6Q" secondAttribute="bottom" constant="38" id="vsY-th-tyk"/>
                                                 <constraint firstItem="TJ8-SL-5TZ" firstAttribute="top" secondItem="pbR-Gs-gHo" secondAttribute="bottom" constant="25" id="zFz-sK-Mzh"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -449,6 +450,12 @@
                                         <barButtonItem key="leftBarButtonItem" title="Return" id="UkX-ER-6wU">
                                             <connections>
                                                 <action selector="onReturnTouch:" destination="ylE-Pc-gks" id="nIS-ue-EIo"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Delete" id="din-gF-7hu">
+                                            <color key="tintColor" systemColor="systemRedColor"/>
+                                            <connections>
+                                                <action selector="onDeleteTouch:" destination="ylE-Pc-gks" id="bkx-mi-jAM"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -667,7 +674,7 @@
                     <connections>
                         <outlet property="pokemonTableView" destination="Int-X8-a6d" id="nB0-eO-hWw"/>
                         <outlet property="teamTitle" destination="De1-lN-8sf" id="RFL-2M-bnR"/>
-                        <segue destination="aLZ-hL-b0W" kind="presentation" identifier="returnTeamsSegue" id="dIu-ER-Mcl"/>
+                        <segue destination="cWM-Kr-H0G" kind="presentation" identifier="returnTeamsSegue" id="upN-X2-AFS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="csW-SY-fcX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -726,7 +733,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="xen-Lq-NJi">
                                             <connections>
                                                 <action selector="onCancel:" destination="Ar5-t4-fHH" id="qAS-aN-8lL"/>
-                                                <segue destination="aLZ-hL-b0W" kind="presentation" identifier="cancelSegue" id="MAg-Wq-fie"/>
+                                                <segue destination="cWM-Kr-H0G" kind="presentation" identifier="cancelSegue" id="OHB-D6-FP1"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1358,10 +1365,8 @@ VGVhbSBCdWlsZGVyIFYIaWV3IENvbnRyb2xsZXI
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="viu-mp-8av"/>
-        <segue reference="yng-1j-r5S"/>
-        <segue reference="med-HT-ELE"/>
-        <segue reference="BiC-1a-Wqw"/>
+        <segue reference="JsZ-dx-a5M"/>
+        <segue reference="upN-X2-AFS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="0" width="96" height="96"/>
@@ -1380,6 +1385,9 @@ VGVhbSBCdWlsZGVyIFYIaWV3IENvbnRyb2xsZXI
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

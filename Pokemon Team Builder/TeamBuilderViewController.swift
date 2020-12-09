@@ -99,10 +99,10 @@ class TeamBuilderViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if (segue.identifier != "saveSegue") {
-        let destination = segue.destination as! PokemonDetailsViewController
-        
-        destination.team = self.team
-        destination.pokemonPlaceInTeam = self.pokemonPlaceInTeam
+            let destination = segue.destination as! PokemonDetailsViewController
+            
+            destination.team = self.team
+            destination.pokemonPlaceInTeam = self.pokemonPlaceInTeam
         }
     }
 }
