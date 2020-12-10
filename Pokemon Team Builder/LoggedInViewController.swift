@@ -20,7 +20,7 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBAction func onViewTouch(_ sender: UIButton) {
         self.performSegue(withIdentifier: "teamViewSegue", sender: sender)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         loadTeams()
@@ -70,7 +70,12 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.pokeFiveImage.image = UIImage(named: (spriteArray[4] + ".png"))
         cell.pokeSixImage.image = UIImage(named: (spriteArray[5] + ".png"))
         
+       
         cell.viewTeamBtn.tag = indexPath.row
+        cell.shareBtn.tag = indexPath.row
+       
+        
+      
         
         return cell
     }
