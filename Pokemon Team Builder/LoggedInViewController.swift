@@ -70,7 +70,7 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.pokeFiveImage.image = UIImage(named: (spriteArray[4] + ".png"))
         cell.pokeSixImage.image = UIImage(named: (spriteArray[5] + ".png"))
         
-        cell.imageShare = UIImage(named: (spriteArray[0] + ".png"))
+       
         cell.viewTeamBtn.tag = indexPath.row
         cell.shareBtn.tag = indexPath.row
        
