@@ -25,6 +25,13 @@ class TeamTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+    @IBAction func onShareTouch(_ sender: UIButton) {
+        
+        let str = "Check out my Pokémon team " + teamNameLabel.text!
+        let vc = UIActivityViewController(activityItems:[str, pokeOneImage as Any], applicationActivities: nil)
+        self.window?.rootViewController?.present(vc, animated: true, completion: nil)
+     }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

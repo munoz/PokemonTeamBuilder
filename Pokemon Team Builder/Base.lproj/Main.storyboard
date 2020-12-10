@@ -385,7 +385,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Share"/>
                                                     <connections>
-                                                        <action selector="onShareTouch:" destination="aLZ-hL-b0W" eventType="touchUpInside" id="4vg-i0-mV9"/>
+                                                        <action selector="onShareTouch:" destination="rev-ub-58y" eventType="touchUpInside" id="uWT-GE-MR7"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -600,7 +600,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="gender" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0C2-1I-hci" userLabel="gender">
-                                                    <rect key="frame" x="220" y="380" width="170" height="34"/>
+                                                    <rect key="frame" x="220" y="380" width="54.5" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="170" id="3DK-zU-gjB"/>
                                                         <constraint firstAttribute="height" constant="34" id="6Sb-eJ-8Yv"/>
@@ -616,7 +616,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="item" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crr-OQ-6h5" userLabel="item">
-                                                    <rect key="frame" x="220" y="454" width="170" height="34"/>
+                                                    <rect key="frame" x="220" y="454" width="33.5" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="170" id="FXe-b5-ULh"/>
                                                         <constraint firstAttribute="height" constant="34" id="njS-3a-6Hc"/>

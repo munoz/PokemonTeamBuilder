@@ -21,12 +21,12 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
         self.performSegue(withIdentifier: "teamViewSegue", sender: sender)
     }
     
-    @IBAction func onShareTouch(_ sender: UIButton) {
-        
-        let actController = UIActivityViewController(activityItems:[#imageLiteral(resourceName: "Cosmos07")], applicationActivities: nil)
-        self.present(actController, animated: true, completion: nil)
-        print("cel")
-    }
+//    @IBAction func onShareTouch(_ sender: UIButton) {
+//        
+//        let actController = UIActivityViewController(activityItems:[#imageLiteral(resourceName: "Cosmos07")], applicationActivities: nil)
+//        self.present(actController, animated: true, completion: nil)
+//        print("cel")
+//    }
     
     
     override func viewDidLoad() {
