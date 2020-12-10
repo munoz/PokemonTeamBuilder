@@ -19,18 +19,19 @@ class TeamTableViewCell: UITableViewCell {
     @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var viewTeamBtn: UIButton!
     @IBOutlet weak var shareBtn: UIButton!
+    var imageShare: UIImage!
+    
+    @IBAction func onShareTouch(_ sender: UIButton) {
+        
+        let text = "Check out my Pokémon team " + teamNameLabel.text!
+        let vc = UIActivityViewController(activityItems:[text, imageShare!], applicationActivities: nil)
+        self.window?.rootViewController?.present(vc, animated: true, completion: nil)
+     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    @IBAction func onShareTouch(_ sender: UIButton) {
-        
-        let str = "Check out my Pokémon team " + teamNameLabel.text!
-        let vc = UIActivityViewController(activityItems:[str, pokeOneImage as Any], applicationActivities: nil)
-        self.window?.rootViewController?.present(vc, animated: true, completion: nil)
-     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

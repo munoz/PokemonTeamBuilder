@@ -20,15 +20,7 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBAction func onViewTouch(_ sender: UIButton) {
         self.performSegue(withIdentifier: "teamViewSegue", sender: sender)
     }
-    
-//    @IBAction func onShareTouch(_ sender: UIButton) {
-//        
-//        let actController = UIActivityViewController(activityItems:[#imageLiteral(resourceName: "Cosmos07")], applicationActivities: nil)
-//        self.present(actController, animated: true, completion: nil)
-//        print("cel")
-//    }
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         loadTeams()
@@ -78,8 +70,10 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.pokeFiveImage.image = UIImage(named: (spriteArray[4] + ".png"))
         cell.pokeSixImage.image = UIImage(named: (spriteArray[5] + ".png"))
         
+        cell.imageShare = UIImage(named: (spriteArray[0] + ".png"))
         cell.viewTeamBtn.tag = indexPath.row
         cell.shareBtn.tag = indexPath.row
+       
         
       
         
