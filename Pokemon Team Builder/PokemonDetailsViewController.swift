@@ -48,11 +48,13 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
                         self.pokemonId = pokemon.id!
                         self.debuggingLabel.text = pokemon.name!
                         self.resultImage.image = UIImage(named: (String(self.pokemonId) + ".png"))
-
+                        
+                        self.abilityArray.removeAll()
                         for i in 0..<pokemon.abilities!.count {
                             self.abilityArray.append((pokemon.abilities?[i].ability?.name)!)
                         }
-
+                        
+                        self.moveArray.removeAll()
                         for i in 0..<pokemon.moves!.count {
                             self.moveArray.append((pokemon.moves?[i].move?.name)!)
                         }
@@ -84,11 +86,13 @@ class PokemonDetailsViewController: UIViewController, UISearchBarDelegate{
                         self.pokemonId = pokemon.id!
                         self.debuggingLabel.text = pokemon.name!
                         self.resultImage.image = UIImage(named: (String(self.pokemonId) + ".png"))
-
+                        
+                        self.abilityArray.removeAll()
                         for i in 0..<pokemon.abilities!.count {
                             self.abilityArray.append((pokemon.abilities?[i].ability?.name)!)
                         }
 
+                        self.moveArray.removeAll()
                         for i in 0..<pokemon.moves!.count {
                             self.moveArray.append((pokemon.moves?[i].move?.name)!)
                         }

@@ -16,7 +16,7 @@ class TeamCreatorViewController: UIViewController {
     let team = PFObject(className: "Team")
     
     @IBAction func onCancel(_ sender: Any) {
-        self.performSegue(withIdentifier: "cancelSegue", sender: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onCreateButton(_ sender: Any) {
@@ -30,7 +30,6 @@ class TeamCreatorViewController: UIViewController {
             self.team.saveInBackground { (success, error) in
                 if success {
                     self.performSegue(withIdentifier: "buildSegue", sender: nil)
-                    print("saved!")
                 } else {
                     print("error!")
                 }

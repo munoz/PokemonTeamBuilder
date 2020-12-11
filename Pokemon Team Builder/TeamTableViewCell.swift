@@ -20,36 +20,6 @@ class TeamTableViewCell: UITableViewCell {
     @IBOutlet weak var viewTeamBtn: UIButton!
     @IBOutlet weak var shareBtn: UIButton!
     
-    @IBAction func onShareTouch(_ sender: UIButton) {
-        var shareImages = [Any]()
-        
-        let text = "Check out my Pokémon team " + teamNameLabel.text!
-        shareImages.append(text)
-        
-        if pokeOneImage.image != UIImage(named: "0.png"){
-            shareImages.append(pokeOneImage.image!)
-        }
-        if pokeTwoImage.image != UIImage(named: "0.png"){
-            print("added")
-            shareImages.append(pokeTwoImage.image!)
-        }
-        if pokeThreeImage.image != UIImage(named: "0.png"){
-            shareImages.append(pokeThreeImage.image!)
-        }
-        if pokeFourImage.image != UIImage(named: "0.png"){
-            shareImages.append(pokeFourImage.image!)
-        }
-        if pokeFiveImage.image != UIImage(named: "0.png"){
-            shareImages.append(pokeFiveImage.image!)
-        }
-        if pokeSixImage.image != UIImage(named: "0.png"){
-            shareImages.append(pokeSixImage.image!)
-        }
-        
-        let vc = UIActivityViewController(activityItems:shareImages, applicationActivities: nil)
-        self.window?.rootViewController?.present(vc, animated: true, completion: nil)
-     }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
