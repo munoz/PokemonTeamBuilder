@@ -57,6 +57,7 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         loadTeams()
         
@@ -69,7 +70,7 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+       
         loadTeams()
     }
     

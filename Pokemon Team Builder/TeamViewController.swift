@@ -54,6 +54,7 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
         })
 //        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
 //        self.performSegue(withIdentifier: "returnTeamsSegue", sender: nil)
+      
     }
     
     override func viewDidLoad() {
