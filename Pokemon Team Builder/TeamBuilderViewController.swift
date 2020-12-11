@@ -34,7 +34,7 @@ class TeamBuilderViewController: UIViewController {
         sixthPokemonButton.currentImage != UIImage(named: "0.png")
         
         if (hasPokemon) {
-            self.performSegue(withIdentifier: "saveSegue", sender: nil)
+            self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         } else {
             self.showToast(message: "One pokemon required!", font: .systemFont(ofSize: 12.0))
         }

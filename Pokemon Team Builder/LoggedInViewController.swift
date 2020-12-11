@@ -20,7 +20,42 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBAction func onViewTouch(_ sender: UIButton) {
         self.performSegue(withIdentifier: "teamViewSegue", sender: sender)
     }
-
+    
+    @IBAction func onShareTouch(_ sender: UIButton) {
+        let index = sender.tag
+        let team = teams[index]
+        let name = team["teamName"] as? String ?? ""
+        
+        var shareImages = [Any]()
+        
+        let text = "Check out my Pokémon team " + name
+        shareImages.append(text)
+        
+        let spriteArray = team["pokeSprites"] as! [String]
+        
+        if spriteArray[0] != "0" {
+            shareImages.append(UIImage(named: (spriteArray[0] + ".png"))!)
+        }
+        if spriteArray[1] != "0" {
+            shareImages.append(UIImage(named: (spriteArray[1] + ".png"))!)
+        }
+        if spriteArray[2] != "0" {
+            shareImages.append(UIImage(named: (spriteArray[2] + ".png"))!)
+        }
+        if spriteArray[3] != "0" {
+            shareImages.append(UIImage(named: (spriteArray[3] + ".png"))!)
+        }
+        if spriteArray[4] != "0" {
+            shareImages.append(UIImage(named: (spriteArray[4] + ".png"))!)
+        }
+        if spriteArray[5] != "0" {
+            shareImages.append(UIImage(named: (spriteArray[5] + ".png"))!)
+        }
+        
+        let vc = UIActivityViewController(activityItems:shareImages, applicationActivities: nil)
+        present(vc, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadTeams()
@@ -38,6 +73,12 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
         loadTeams()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        loadTeams()
+    }
+        
     @objc func loadTeams() {
         let query = PFQuery(className: "Team")
         query.includeKey("userID")
@@ -70,12 +111,8 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.pokeFiveImage.image = UIImage(named: (spriteArray[4] + ".png"))
         cell.pokeSixImage.image = UIImage(named: (spriteArray[5] + ".png"))
         
-       
         cell.viewTeamBtn.tag = indexPath.row
         cell.shareBtn.tag = indexPath.row
-       
-        
-      
         
         return cell
     }
@@ -93,6 +130,7 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
             let destination = segue.destination as! TeamViewController
             
             destination.team = team
+            destination.logged = self
         }
     }
 }

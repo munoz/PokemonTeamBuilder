@@ -17,9 +17,10 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var pokemons =  [PFObject]()
     var team = PFObject(className: "Team")
+    var logged:LoggedInViewController!
     
     @IBAction func onReturnTouch(_ sender: Any) {
-        self.performSegue(withIdentifier: "returnTeamsSegue", sender: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onDeleteTouch(_ sender: Any) {
@@ -29,7 +30,7 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
         pokemon.findObjectsInBackground { (pkms, error) in
             if error == nil {
                 for pkm in pkms ?? [] {
-                    pkm.deleteEventually()
+                    pkm.deleteInBackground()
                 }
             }
         }
@@ -42,12 +43,17 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
         query.findObjectsInBackground { (teams, error) in
             if teams != nil {
                 for team in teams ?? [] {
-                    team.deleteEventually()
+                    team.deleteInBackground()
                 }
             }
         }
         
-        self.performSegue(withIdentifier: "returnTeamsSegue", sender: nil)
+        logged.loadTeams()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute:    {
+            self.dismiss(animated: true, completion: nil)
+        })
+//        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
+//        self.performSegue(withIdentifier: "returnTeamsSegue", sender: nil)
     }
     
     override func viewDidLoad() {
@@ -73,6 +79,20 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
     }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        print("Bye")
+//        if let firstVC = presentingViewController as? LoggedInViewController {
+//            print("Hello")
+//            DispatchQueue.main.async {
+//                firstVC.loadTeams()
+//            }
+//        }
+//
+//
+//
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pokemons.count
