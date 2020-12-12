@@ -131,7 +131,6 @@ class LoggedInViewController: UIViewController, UITableViewDataSource, UITableVi
             let destination = segue.destination as! TeamViewController
             
             destination.team = team
-            destination.logged = self
         }
     }
 }

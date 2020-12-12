@@ -17,7 +17,6 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var pokemons =  [PFObject]()
     var team = PFObject(className: "Team")
-    var logged:LoggedInViewController!
     
     @IBAction func onReturnTouch(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -48,13 +47,9 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
         
-        logged.loadTeams()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute:    {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute:    {
             self.dismiss(animated: true, completion: nil)
         })
-//        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
-//        self.performSegue(withIdentifier: "returnTeamsSegue", sender: nil)
-      
     }
     
     override func viewDidLoad() {

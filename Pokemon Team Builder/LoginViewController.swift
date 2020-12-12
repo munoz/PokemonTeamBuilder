@@ -20,8 +20,12 @@ class LoginViewController: UIViewController {
         
         PFUser.logInWithUsername(inBackground: username, password: password)
         { (user, error) in
-            if user != nil {
-                self.performSegue(withIdentifier: "tabSegue", sender: nil)
+            if user != nil {                
+                let main = UIStoryboard(name: "Main", bundle: nil)
+                let UserTabBarController = main.instantiateViewController(identifier: "UserTabBarController")
+                let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+                
+                sceneDelegate.window?.rootViewController = UserTabBarController
             } else {
                 print("Error: \(String(describing: error?.localizedDescription))")
             }

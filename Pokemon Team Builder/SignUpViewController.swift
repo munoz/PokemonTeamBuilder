@@ -21,8 +21,11 @@ class SignUpViewController: UIViewController {
         
         user.signUpInBackground { (success, error) in
             if success {
-                //need to create main page then login segue
-                self.performSegue(withIdentifier: "signupTabSegue", sender: nil)
+                let main = UIStoryboard(name: "Main", bundle: nil)
+                let UserTabBarController = main.instantiateViewController(identifier: "UserTabBarController")
+                let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+                
+                sceneDelegate.window?.rootViewController = UserTabBarController
             } else {
                 print("Error: \(String(describing: error?.localizedDescription))")
             }
